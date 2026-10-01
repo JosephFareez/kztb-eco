@@ -73,7 +73,7 @@
         element.textContent = rounded.toLocaleString(
             'ru-RU',
             {
-                minimumFractionDigits: decimals > 0 ? 0 : 0,
+                minimumFractionDigits: 0,
                 maximumFractionDigits: decimals
             }
         );
@@ -122,9 +122,11 @@
             const wrapper =
                 document.createElement('div');
 
-            wrapper.className = 'calc-subsection window-type';
+            wrapper.className =
+                'calc-subsection window-type';
 
-            wrapper.dataset.windowType = String(i);
+            wrapper.dataset.windowType =
+                String(i);
 
 
             wrapper.innerHTML = `
@@ -223,9 +225,11 @@
             const wrapper =
                 document.createElement('div');
 
-            wrapper.className = 'calc-subsection door-type';
+            wrapper.className =
+                'calc-subsection door-type';
 
-            wrapper.dataset.doorType = String(i);
+            wrapper.dataset.doorType =
+                String(i);
 
 
             wrapper.innerHTML = `
@@ -311,9 +315,8 @@
 
     function updateWindowsVisibility() {
 
-        const count = number(
-            windowsCount?.value
-        );
+        const count =
+            number(windowsCount?.value);
 
 
         $$('.window-type').forEach((element, index) => {
@@ -358,9 +361,8 @@
 
     function updateDoorsVisibility() {
 
-        const count = number(
-            doorsCount?.value
-        );
+        const count =
+            number(doorsCount?.value);
 
 
         $$('.door-type').forEach((element, index) => {
@@ -400,21 +402,26 @@
     ========================================================= */
 
     const gableCount =
-        document.getElementById('PFD_col_frontonov');
+        document.getElementById(
+            'PFD_col_frontonov'
+        );
 
 
     function updateGablesVisibility() {
 
-        const count = number(
-            gableCount?.value
-        );
+        const count =
+            number(gableCount?.value);
 
 
         const gable1 =
-            document.getElementById('additionalGable1');
+            document.getElementById(
+                'additionalGable1'
+            );
 
         const gable2 =
-            document.getElementById('additionalGable2');
+            document.getElementById(
+                'additionalGable2'
+            );
 
 
         if (gable1) {
@@ -490,14 +497,6 @@
 
     /* =========================================================
        GABLE AREA
-
-       ORIGINAL:
-
-       (PFD_dlina*PFD_shirina)
-       +
-       (PFD_dlina_dop1*PFD_shirina_dop1*0.5)
-       +
-       (PFD_dlina_dop2*PFD_shirina_dop2*0.5)
     ========================================================= */
 
     function calculateGableArea() {
@@ -508,10 +507,12 @@
         const mainHeight =
             getValue('PFD_shirina');
 
+
         const additional1 =
             getValue('PFD_dlina_dop1') *
             getValue('PFD_shirina_dop1') *
             0.5;
+
 
         const additional2 =
             getValue('PFD_dlina_dop2') *
@@ -528,22 +529,8 @@
     /* =========================================================
        WINDOWS AREA
 
-       IMPORTANT:
-
-       The original Tilda formula contains PO #4 twice.
-
-       We intentionally preserve it here.
-
-       Original:
-
-       PO1
-       + PO2
-       + PO3
-       + PO4
-       + PO4
-       + PO5
-       ...
-       + PO9
+       Preserves the original Tilda behavior,
+       including the duplicated type 4.
     ========================================================= */
 
     function calculateWindowArea() {
@@ -570,8 +557,8 @@
 
 
             /*
-                Preserve the duplicate PO4
-                from the original Tilda formula.
+                Original Tilda formula contains
+                PO4 twice.
             */
 
             if (i === 4) {
@@ -592,11 +579,6 @@
 
     /* =========================================================
        DOORS AREA
-
-       ORIGINAL:
-
-       (width * height * count)
-       for doors 1-4
     ========================================================= */
 
     function calculateDoorArea() {
@@ -629,16 +611,6 @@
 
     /* =========================================================
        PDD_CH
-
-       ORIGINAL:
-
-       PDD_shirina1*PDD_col1
-       +
-       PDD_shirina2*PDD_col2
-       +
-       PDD_shirina3*PDD_col3
-       +
-       PDD_shirina4*PDD_col4
     ========================================================= */
 
     function calculatePDD_CH() {
@@ -661,12 +633,6 @@
 
     /* =========================================================
        PO_CH
-
-       ORIGINAL:
-
-       PO_shirina1*PO_col1
-       ...
-       PO_shirina9*PO_col9
     ========================================================= */
 
     function calculatePO_CH() {
@@ -691,15 +657,6 @@
        BLOCK CALCULATIONS
     ========================================================= */
 
-
-    /*
-        Total blocks
-
-        ORIGINAL:
-
-        PZVOD_total * 12.5
-    */
-
     function calculateTotalBlocks(
         totalWallArea
     ) {
@@ -707,14 +664,6 @@
         return totalWallArea * 12.5;
     }
 
-
-    /*
-        Block volume
-
-        ORIGINAL:
-
-        Itogo_kolichestvo_blokov / 33
-    */
 
     function calculateBlockVolume(
         totalBlocks
@@ -724,31 +673,14 @@
     }
 
 
-    /*
-        Outer corner blocks
-
-        ORIGINAL:
-
-        PSDF_visota / 0.2 * PSDF_ugol_naruzh
-    */
-
     function calculateOuterCornerBlocks() {
 
         return (
-                getValue('PSDF_visota') /
-                0.2
-            ) *
-            getValue('PSDF_ugol_naruzh');
+            getValue('PSDF_visota') /
+            0.2
+        ) * getValue('PSDF_ugol_naruzh');
     }
 
-
-    /*
-        Outer corner price
-
-        ORIGINAL:
-
-        quantity * 400
-    */
 
     function calculateOuterCornerPrice(
         quantity
@@ -758,31 +690,14 @@
     }
 
 
-    /*
-        Inner corner blocks
-
-        ORIGINAL:
-
-        PSDF_visota / 0.2 * PSDF_ugol_vnut
-    */
-
     function calculateInnerCornerBlocks() {
 
         return (
-                getValue('PSDF_visota') /
-                0.2
-            ) *
-            getValue('PSDF_ugol_vnut');
+            getValue('PSDF_visota') /
+            0.2
+        ) * getValue('PSDF_ugol_vnut');
     }
 
-
-    /*
-        Inner corner price
-
-        ORIGINAL:
-
-        quantity * 350
-    */
 
     function calculateInnerCornerPrice(
         quantity
@@ -792,14 +707,6 @@
     }
 
 
-    /*
-        Internal additional blocks
-
-        ORIGINAL:
-
-        Blok_uglovoy_vnut
-    */
-
     function calculateInternalAdditionalBlocks(
         innerCorners
     ) {
@@ -808,14 +715,6 @@
     }
 
 
-    /*
-        Internal additional blocks price
-
-        ORIGINAL:
-
-        quantity * 120
-    */
-
     function calculateInternalAdditionalPrice(
         quantity
     ) {
@@ -823,18 +722,6 @@
         return quantity * 120;
     }
 
-
-    /*
-        Door blocks
-
-        ORIGINAL:
-
-        (
-            PDD_visota1 * PDD_col1
-            +
-            ...
-        ) / 0.2
-    */
 
     function calculateDoorBlocks() {
 
@@ -854,14 +741,6 @@
     }
 
 
-    /*
-        Door block price
-
-        ORIGINAL:
-
-        quantity * 350
-    */
-
     function calculateDoorBlockPrice(
         quantity
     ) {
@@ -871,32 +750,14 @@
 
 
     /*
-        Second door block category
-
-        The original final formula references
-        Blok_dvernogo_proema_12, but the uploaded
-        calculator does not define that field.
-
-        Therefore it effectively remains 0.
+        These two categories existed in the
+        original formula but have no source
+        fields in the calculator.
     */
 
     const doorBlock12 = 0;
-
     const doorBlock12Price = 0;
 
-
-    /*
-        Window blocks
-
-        ORIGINAL:
-
-        (
-            PO_visota1 * PO_col1
-            +
-            ...
-            PO_visota9 * PO_col9
-        ) / 0.2
-    */
 
     function calculateWindowBlocks() {
 
@@ -916,14 +777,6 @@
     }
 
 
-    /*
-        Window block price
-
-        ORIGINAL:
-
-        quantity * 350
-    */
-
     function calculateWindowBlockPrice(
         quantity
     ) {
@@ -932,45 +785,13 @@
     }
 
 
-    /*
-        Second window block category.
-
-        Referenced by the original formula,
-        but not defined as an input/calculation
-        in the uploaded Tilda source.
-
-        Therefore 0.
-    */
-
     const windowBlock12 = 0;
-
     const windowBlock12Price = 0;
 
 
-    /*
-        Armopoyas blocks
-
-        ORIGINAL:
-
-        ((PSDF_dlina*PSDF_shirina)
-        * PSDF_kol_armopoyasov / 0.4)
-
-        +
-
-        (
-            (PO_CH + PDD_CH) / 0.4
-            +
-            (
-                PDD_col1
-                + PDD_col2
-                + PDD_col3
-                + PDD_col4
-                + PO_col1
-                ...
-                + PO_col9
-            ) * 0.9
-        )
-    */
+    /* =========================================================
+       ARMOPoyAS BLOCKS
+    ========================================================= */
 
     function calculateArmopoyasBlocks(
         poCH,
@@ -1029,14 +850,6 @@
     }
 
 
-    /*
-        Armopoyas price
-
-        ORIGINAL:
-
-        quantity * 200
-    */
-
     function calculateArmopoyasPrice(
         quantity
     ) {
@@ -1045,27 +858,9 @@
     }
 
 
-    /*
-        Row blocks
-
-        ORIGINAL:
-
-        (Itogo_kolichestvo_blokov * 1.02)
-        -
-        (Blok_uglovoy_naruzhniy * 1.5)
-        -
-        (Blok_uglovoy_vnut * 0.5)
-        -
-        Blok_dvernogo_proema
-        -
-        (Blok_dvernogo_proema_12 / 2)
-        -
-        Blok_okonniy_chetvert
-        -
-        (Blok_okonniy_chetvert_12 / 2)
-        -
-        Blok_doborniy_armopoyasnoy
-    */
+    /* =========================================================
+       ROW BLOCKS
+    ========================================================= */
 
     function calculateRowBlocks(
         totalBlocks,
@@ -1112,14 +907,6 @@
     }
 
 
-    /*
-        Row block price
-
-        ORIGINAL:
-
-        quantity * 345
-    */
-
     function calculateRowBlockPrice(
         quantity
     ) {
@@ -1128,13 +915,9 @@
     }
 
 
-    /*
-        Pallets / packaging
-
-        ORIGINAL:
-
-        PZVOD_total * 12.5 / 36
-    */
+    /* =========================================================
+       PALLETS / PACKAGING
+    ========================================================= */
 
     function calculatePackaging(
         totalWallArea
@@ -1147,378 +930,12 @@
     }
 
 
-    /*
-        Packaging price
-
-        ORIGINAL:
-
-        quantity * 400
-    */
-
     function calculatePackagingPrice(
         quantity
     ) {
 
         return quantity * 400;
     }
-
-
-    /*
-        Trucks
-
-        ORIGINAL:
-
-        Poddoni_i_upakovka / 18
-    */
-
-    function calculateTrucks(
-        packaging
-    ) {
-
-        return packaging / 18;
-    }
-
-
-    /* =========================================================
-       DELIVERY
-    ========================================================= */
-
-    /*
-        Original source address:
-
-        Россия,
-        Барятинский район,
-        деревня Дегонка
-    */
-
-    const FROM_ADDRESS =
-        'Россия, Барятинский район, деревня Дегонка';
-
-
-    let deliveryDistance = 0;
-
-
-    let yandexReadyPromise = null;
-
-
-    /*
-        Load Yandex Maps API dynamically.
-    */
-
-    function loadYandexMaps() {
-
-        if (window.ymaps) {
-            return Promise.resolve(window.ymaps);
-        }
-
-
-        if (yandexReadyPromise) {
-            return yandexReadyPromise;
-        }
-
-
-        const apiKey =
-            window.ECOBLOCK_YANDEX_API_KEY;
-
-
-        if (
-            !apiKey ||
-            apiKey === 'YOUR_YANDEX_API_KEY'
-        ) {
-
-            console.warn(
-                'Yandex Maps API key is not configured.'
-            );
-
-            return Promise.reject(
-                new Error(
-                    'Yandex Maps API key is not configured.'
-                )
-            );
-        }
-
-
-        yandexReadyPromise =
-            new Promise((resolve, reject) => {
-
-                const script =
-                    document.createElement('script');
-
-
-                script.src =
-                    `https://api-maps.yandex.ru/2.1/?apikey=${encodeURIComponent(apiKey)}&lang=ru_RU`;
-
-
-                script.async = true;
-
-
-                script.onload = () => {
-
-                    if (!window.ymaps) {
-
-                        reject(
-                            new Error(
-                                'Yandex Maps API loaded incorrectly.'
-                            )
-                        );
-
-                        return;
-                    }
-
-
-                    window.ymaps.ready(() => {
-                        resolve(window.ymaps);
-                    });
-
-                };
-
-
-                script.onerror = () => {
-
-                    reject(
-                        new Error(
-                            'Could not load Yandex Maps API.'
-                        )
-                    );
-
-                };
-
-
-                document.head.appendChild(script);
-
-            });
-
-
-        return yandexReadyPromise;
-    }
-
-
-    /*
-        Calculate road distance using Yandex Maps.
-
-        This follows the same structure as the
-        original Tilda script:
-
-        geocode production address
-        +
-        geocode delivery address
-        ->
-        ymaps.route()
-        ->
-        distance in km
-    */
-
-    async function calculateDeliveryDistance(
-        address
-    ) {
-
-        const status =
-            document.getElementById(
-                'deliveryStatus'
-            );
-
-
-        if (!address.trim()) {
-
-            deliveryDistance = 0;
-
-            setValue(
-                'rasstoyanie_kilometr',
-                0
-            );
-
-            if (status) {
-
-                status.textContent =
-                    'Введите адрес доставки';
-
-            }
-
-            calculate();
-
-            return;
-        }
-
-
-        if (status) {
-
-            status.textContent =
-                'Определяем расстояние...';
-
-        }
-
-
-        try {
-
-            const ymaps =
-                await loadYandexMaps();
-
-
-            const fromResult =
-                await ymaps.geocode(
-                    FROM_ADDRESS
-                );
-
-
-            const toResult =
-                await ymaps.geocode(
-                    address
-                );
-
-
-            const fromObject =
-                fromResult.geoObjects.get(0);
-
-            const toObject =
-                toResult.geoObjects.get(0);
-
-
-            if (!fromObject) {
-
-                throw new Error(
-                    'Не удалось определить адрес производства.'
-                );
-            }
-
-
-            if (!toObject) {
-
-                throw new Error(
-                    'Не удалось определить адрес доставки.'
-                );
-            }
-
-
-            const fromCoords =
-                fromObject.geometry.getCoordinates();
-
-
-            const toCoords =
-                toObject.geometry.getCoordinates();
-
-
-            const route =
-                await ymaps.route(
-                    [
-                        fromCoords,
-                        toCoords
-                    ]
-                );
-
-
-            /*
-                Original Tilda:
-
-                Math.ceil(
-                    route.getLength() / 1000
-                )
-            */
-
-            deliveryDistance =
-                Math.ceil(
-                    route.getLength() / 1000
-                );
-
-
-            setValue(
-                'rasstoyanie_kilometr',
-                deliveryDistance
-            );
-
-
-            if (status) {
-
-                status.textContent =
-                    'Расстояние рассчитано';
-
-            }
-
-
-            calculate();
-
-        } catch (error) {
-
-            console.error(
-                'Yandex Maps error:',
-                error
-            );
-
-
-            deliveryDistance = 0;
-
-
-            setValue(
-                'rasstoyanie_kilometr',
-                0
-            );
-
-
-            if (status) {
-
-                status.textContent =
-                    'Не удалось определить расстояние. Проверьте адрес.';
-
-            }
-
-
-            calculate();
-
-        }
-
-    }
-
-
-    /* =========================================================
-       DELIVERY INPUT
-    ========================================================= */
-
-    const addressInput =
-        document.getElementById(
-            'adress_dostavki'
-        );
-
-
-    let addressTimer = null;
-
-
-    function requestDeliveryCalculation() {
-
-        clearTimeout(addressTimer);
-
-
-        addressTimer =
-            setTimeout(() => {
-
-                calculateDeliveryDistance(
-                    addressInput?.value || ''
-                );
-
-            }, 500);
-    }
-
-
-    addressInput?.addEventListener(
-        'change',
-        requestDeliveryCalculation
-    );
-
-
-    addressInput?.addEventListener(
-        'blur',
-        requestDeliveryCalculation
-    );
-
-
-    /*
-        We also listen to input so changing the address
-        can update the route without requiring another
-        click.
-    */
-
-    addressInput?.addEventListener(
-        'input',
-        requestDeliveryCalculation
-    );
 
 
     /* =========================================================
@@ -1548,15 +965,15 @@
 
 
         /*
-            Original:
+            Final wall area:
 
-            PSDF_ploshad
+            Main walls
             +
-            PFD_ploshad
+            Gables
             -
-            PO_ploshad_total
+            Windows
             -
-            PDD_ploshad_total
+            Doors
         */
 
         const totalWallArea =
@@ -1692,49 +1109,22 @@
             );
 
 
-        /*
-            Original:
-
-            Dostavka_fura =
-            Poddoni_i_upakovka / 18
-        */
-
-        const trucks =
-            calculateTrucks(
-                packaging
-            );
-
-
         /* ---------------------------------------------
-           DELIVERY COST
+           COSTS
         --------------------------------------------- */
 
         /*
-            Original:
+            COST OF BLOCKS
 
-            rasstoyanie_kilometr
-            *
-            Dostavka_fura
-            *
-            125
+            IMPORTANT:
+            Packaging is NOT included here anymore.
+
+            The original formula contained
+            outerCornerPrice twice.
+            This is preserved exactly.
         */
 
-        const deliveryCost =
-            deliveryDistance *
-            trucks *
-            125;
-
-
-        /* ---------------------------------------------
-           BLOCK TOTAL
-
-           We preserve the original expression.
-
-           Notice that the original has the
-           outer corner price TWICE.
-        --------------------------------------------- */
-
-        const blockTotalCost =
+        const blocksCost =
 
             outerCornerPrice +
 
@@ -1752,19 +1142,35 @@
 
             armopoyasPrice +
 
-            rowBlockPrice +
+            rowBlockPrice;
 
+
+        /*
+            PACKAGING
+
+            Packaging and pallets are calculated separately.
+        */
+
+        const materialsPackagingCost =
             packagingPrice;
+
+
+        /*
+            TOTAL MATERIALS COST
+
+            Blocks + packaging.
+
+            This value is kept in the original
+            hidden field "Itogo_stoimost".
+        */
+
+        const materialsCost =
+            blocksCost +
+            materialsPackagingCost;
 
 
         /* ---------------------------------------------
            HOUSE CONSTRUCTION COST
-
-           Original:
-
-           Tip_doma *
-           PSDF_dlina *
-           PSDF_shirina
         --------------------------------------------- */
 
         const houseTypePrice =
@@ -1788,18 +1194,14 @@
         /* ---------------------------------------------
            FINAL TOTAL
 
-           Original:
+           DELIVERY REMOVED.
 
-           PSDF_dlina *
-           PSDF_shirina *
-           Tip_doma
-           +
-           Stoimost_dostavki
+           The existing calculator logic defines
+           the final total as the construction cost.
         --------------------------------------------- */
 
         const finalTotal =
-            constructionCost +
-            deliveryCost;
+            constructionCost;
 
 
         /* ---------------------------------------------
@@ -1980,21 +1382,14 @@
         );
 
 
-        setValue(
-            'Dostavka_fura',
-            trucks
-        );
-
-
-        setValue(
-            'Stoimost_dostavki',
-            deliveryCost
-        );
-
+        /*
+            Original hidden field:
+            total cost of blocks + packaging.
+        */
 
         setValue(
             'Itogo_stoimost',
-            blockTotalCost
+            materialsCost
         );
 
 
@@ -2012,11 +1407,13 @@
 
         /* ---------------------------------------------
            FORMULA FIELD
+
+           DELIVERY REMOVED
         --------------------------------------------- */
 
         setValue(
             'Formula',
-            'PSDF_dlina*PSDF_shirina*Tip_doma+Stoimost_dostavki'
+            'PSDF_dlina*PSDF_shirina*Tip_doma'
         );
 
 
@@ -2115,37 +1512,33 @@
         );
 
 
-        setMoneyView(
-            'Itogo_stoimost_view',
-            blockTotalCost
-        );
+        /* ---------------------------------------------
+           THREE SEPARATE COSTS
+        --------------------------------------------- */
 
-
-        setView(
-            'distanceView',
-            deliveryDistance,
-            0
-        );
-
-
-        setView(
-            'trucksView',
-            trucks,
-            2
-        );
-
+        /*
+            1. COST OF BLOCKS
+        */
 
         setMoneyView(
-            'deliveryCostView',
-            deliveryCost
+            'blocksCostView',
+            blocksCost
         );
 
+
+        /*
+            2. PACKAGING AND PALLETS
+        */
 
         setMoneyView(
-            'deliveryCostView2',
-            deliveryCost
+            'packagingCostView',
+            materialsPackagingCost
         );
 
+
+        /*
+            3. CONSTRUCTION COST
+        */
 
         setMoneyView(
             'constructionCostView',
@@ -2153,10 +1546,15 @@
         );
 
 
+        /*
+            FINAL TOTAL
+        */
+
         setMoneyView(
             'ITOGO_view',
             finalTotal
         );
+
     }
 
 
@@ -2212,28 +1610,14 @@
 
 
             /*
-                The original Tilda custom script rounded
-                these fields before submission:
-
-                Dostavka_fura
-                Poddoni_i_upakovka
-                Blok_ryadniy
-
-                We reproduce that behavior here.
+                Round the same values that the original
+                calculator rounded before submission.
             */
 
             const roundedPackaging =
                 Math.ceil(
                     getValue(
                         'Poddoni_i_upakovka'
-                    )
-                );
-
-
-            const roundedTrucks =
-                Math.ceil(
-                    getValue(
-                        'Dostavka_fura'
                     )
                 );
 
@@ -2253,39 +1637,20 @@
 
 
             setValue(
-                'Dostavka_fura',
-                roundedTrucks
-            );
-
-
-            setValue(
                 'Blok_ryadniy',
                 roundedRowBlocks
             );
 
 
             /*
-                Recalculate delivery using the rounded
-                number of trucks, because the original
-                submission process rounds Dostavka_fura.
+                DELIVERY HAS BEEN REMOVED.
+
+                No Yandex Maps.
+                No address.
+                No distance.
+                No trucks.
+                No delivery cost.
             */
-
-            const distance =
-                getValue(
-                    'rasstoyanie_kilometr'
-                );
-
-
-            const delivery =
-                distance *
-                roundedTrucks *
-                125;
-
-
-            setValue(
-                'Stoimost_dostavki',
-                delivery
-            );
 
 
             const construction =
@@ -2295,8 +1660,7 @@
 
 
             const final =
-                construction +
-                delivery;
+                construction;
 
 
             setValue(
@@ -2306,14 +1670,8 @@
 
 
             setMoneyView(
-                'deliveryCostView',
-                delivery
-            );
-
-
-            setMoneyView(
-                'deliveryCostView2',
-                delivery
+                'constructionCostView',
+                construction
             );
 
 
@@ -2336,18 +1694,6 @@
 
             }
 
-
-            /*
-                At this point the form contains all
-                original calculation fields.
-
-                This is where we can later connect:
-                - email
-                - PHP
-                - Telegram bot
-                - backend API
-                - Tilda-compatible form endpoint
-            */
 
             console.log(
                 'ECOblock calculator data:',

@@ -15,9 +15,7 @@
     <link rel="stylesheet" href="css/calculator.css">
 </head>
 <body>
-<a class="skip-link" href="#ecoCalculator">К содержанию</a>
-
-<a class="skip-link" href="#main">К содержанию</a>
+<a class="skip-link" href="#calculator">К содержанию</a>
 <header class="header" id="top">
     <div class="container header__inner">
         <!-- Logo Area -->
@@ -33,10 +31,9 @@
         <!-- Navigation -->
         <nav class="nav" aria-label="Основная навигация">
             <a href="index.html" class="is-active">Главная</a>
-            <a href="#catalog">Каталог</a>
-            <a href="#about">О производстве</a>
-            <a href="calculator.html">Калькулятор блоков</a>
-            <a href="#contacts">Контакты</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="index.html/about">О производстве</a>
+            <a href="index.html/contacts">Контакты</a>
         </nav>
 
         <!-- Phone and Button -->
@@ -81,8 +78,8 @@
             </h2>
 
             <p class="calculator__description">
-                Рассчитайте количество блоков и ориентировочную стоимость
-                строительства дома с учётом доставки.
+                Рассчитайте необходимое количество блоков и ориентировочную
+                стоимость материалов для строительства дома.
             </p>
         </div>
 
@@ -705,158 +702,61 @@
 
             </section>
 
-
             <!-- =========================================
-                 8. ДОСТАВКА
+                 8. СТОИМОСТЬ
             ========================================== -->
+            <section class="calc-section calc-section--total">
 
-            <section class="calc-section">
-
-                <div class="calc-section__heading">
+                <div class="calc-section__head">
                     <span class="calc-section__number">08</span>
 
                     <div>
-                        <h3>Доставка</h3>
-                        <p>
-                            Расстояние рассчитывается через Яндекс Карты
-                        </p>
+                        <h3>Стоимость</h3>
+                        <p>Ориентировочный расчёт</p>
                     </div>
                 </div>
-
-
-                <div class="calc-field">
-
-                    <label for="adress_dostavki">
-                        Адрес доставки
-                    </label>
-
-                    <input
-                            type="text"
-                            id="adress_dostavki"
-                            name="adress_dostavki"
-                            placeholder="г. Город, ул. Уличная, д. 1"
-                            autocomplete="street-address"
-                            required
-                    >
-
-                    <div
-                            id="deliveryStatus"
-                            class="delivery-status"
-                    >
-                        Введите адрес доставки
-                    </div>
-
-                </div>
-
-
-                <div class="delivery-info">
-
-                    <div>
-                        <span>Расстояние</span>
-
-                        <strong>
-                            <span id="distanceView">0</span> км
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>Машин</span>
-
-                        <strong>
-                            <span id="trucksView">0</span>
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>Стоимость доставки</span>
-
-                        <strong>
-                            <span id="deliveryCostView">0</span> ₽
-                        </strong>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =========================================
-                 9. СТОИМОСТЬ
-            ========================================== -->
-
-            <section class="calc-section calc-section--total">
-
-                <div class="calc-section__heading">
-
-                    <span class="calc-section__number">09</span>
-
-                    <div>
-                        <h3>Итоговая стоимость</h3>
-                        <p>
-                            Ориентировочный расчёт
-                        </p>
-                    </div>
-
-                </div>
-
 
                 <div class="total-result">
 
                     <div class="total-result__row">
-                        <span>
-                            Стоимость строительства
-                        </span>
-
+                        <span>Стоимость блоков</span>
                         <strong>
-                            <span id="constructionCostView">
-                                0
-                            </span> ₽
+                            <span id="blocksCostView">0</span> ₽
                         </strong>
                     </div>
-
 
                     <div class="total-result__row">
-                        <span>
-                            Доставка
-                        </span>
-
+                        <span>Упаковка и поддоны</span>
                         <strong>
-                            <span id="deliveryCostView2">
-                                0
-                            </span> ₽
+                            <span id="packagingCostView">0</span> ₽
                         </strong>
                     </div>
 
+                    <div class="total-result__row">
+                        <span>Стоимость строительства</span>
+                        <strong>
+                            <span id="constructionCostView">0</span> ₽
+                        </strong>
+                    </div>
 
                     <div class="total-result__final">
-
-                        <span>
-                            ИТОГО
-                        </span>
-
+                        <span>ИТОГО</span>
                         <strong>
-                            <span id="ITOGO_view">
-                                0
-                            </span> ₽
+                            <span id="ITOGO_view">0</span> ₽
                         </strong>
-
                     </div>
 
                 </div>
 
             </section>
-
-
             <!-- =========================================
-                 10. КОНТАКТЫ
+                 9. КОНТАКТЫ
             ========================================== -->
 
             <section class="calc-section">
 
                 <div class="calc-section__heading">
-                    <span class="calc-section__number">10</span>
+                    <span class="calc-section__number">9</span>
 
                     <div>
                         <h3>Получить расчёт</h3>
@@ -1117,23 +1017,6 @@
                     value="0"
             >
 
-            <input
-                    type="hidden"
-                    name="rasstoyanie_kilometr"
-                    value="0"
-            >
-
-            <input
-                    type="hidden"
-                    name="Dostavka_fura"
-                    value="0"
-            >
-
-            <input
-                    type="hidden"
-                    name="Stoimost_dostavki"
-                    value="0"
-            >
 
             <input
                     type="hidden"
@@ -1164,16 +1047,6 @@
     </div>
 
 </section>
-
-
-<!--
-    YANDEX MAPS API
-
-    Replace YOUR_YANDEX_API_KEY with your actual API key.
--->
-<script>
-    window.ECOBLOCK_YANDEX_API_KEY = '645baee7-ef6e-48ea-a27a-39a7a95b0815';
-</script>
 
 
 <!-- FOOTER -->
