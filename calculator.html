@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="ЭКОБЛОК — производство и поставка теплоблоков. Собственное производство, контроль качества, доставка и консультация по строительству.">
+    <meta name="theme-color" content="#17382d">
+    <title>ЭКОБЛОК — современное производство теплоблоков</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+<a class="skip-link" href="#ecoCalculator">К содержанию</a>
+
+<a class="skip-link" href="#main">К содержанию</a>
+<header class="header" id="top">
+    <div class="container header__inner">
+        <!-- Logo Area -->
+        <a class="brand" href="#top" aria-label="KZTB">
+            <img src="assets/images/logo.png" alt="KZTB Логотип" class="brand__logo">
+
+            <div class="brand__text">
+                <strong>KZTB</strong>
+                <span>теплоблоки<br>для строительства</span>
+            </div>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="nav" aria-label="Основная навигация">
+            <a href="index.html" class="is-active">Главная</a>
+            <a href="#catalog">Каталог</a>
+            <a href="#about">О производстве</a>
+            <a href="calculator.html">Калькулятор блоков</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <!-- Phone and Button -->
+        <div class="header__right">
+            <a class="phone" href="tel:+78001234567">
+                <div class="phone__icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.92V19.92C22 20.4504 21.7893 20.9591 21.4142 21.3342C21.0391 21.7093 20.5304 21.92 20 21.92C16.8927 21.5794 13.9189 20.5284 11.28 18.84C8.82513 17.3073 6.74415 15.2263 5.21146 12.7715C3.51867 10.1221 2.46468 7.13524 2.12999 4.01001C2.12999 3.47957 2.34062 2.97089 2.71573 2.59578C3.09084 2.22067 3.59952 2.01001 4.12999 2.01001H7.12999C7.57525 2.00523 8.00574 2.16431 8.34149 2.45892C8.67725 2.75354 8.89531 3.16361 8.95999 3.61001C9.08681 4.57147 9.32421 5.51347 9.66999 6.42001C9.80789 6.78018 9.83358 7.17515 9.74312 7.54923C9.65267 7.92332 9.45071 8.25779 9.16499 8.51001L7.89499 9.78001C9.31846 12.2858 11.3643 14.3316 13.87 15.755L15.14 14.485C15.3922 14.1993 15.7267 13.9973 16.1008 13.9069C16.4749 13.8164 16.8698 13.8421 17.23 13.98C18.1365 14.3258 19.0785 14.5632 20.04 14.69C20.4897 14.7556 20.9028 14.9765 21.1983 15.3162C21.4939 15.6558 21.6525 16.0903 21.64 16.54L22 16.92Z"
+                              stroke="#455242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="phone__text">
+                    <b>+7 (800) 123-45-67</b>
+                </div>
+            </a>
+            <button class="btn btn--dark">Заказать звонок</button>
+        </div>
+
+        <!-- Mobile Burger Menu Button -->
+        <button class="burger" type="button" aria-label="Меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="custom-shape-divider-bottom">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+             preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                  opacity=".25" class="shape-fill-cream"></path>
+
+        </svg>
+    </div>
+</header>
+<section class="calculator" id="calculator">
+
+    <div class="calculator__container">
+
+        <div class="calculator__header">
+            <span class="calculator__label">РАСЧЁТ</span>
+
+            <h2 class="calculator__title">
+                Калькулятор теплоблоков
+            </h2>
+
+            <p class="calculator__description">
+                Рассчитайте количество блоков и ориентировочную стоимость
+                строительства дома с учётом доставки.
+            </p>
+        </div>
+
+
+        <form id="ecoCalculator" class="eco-calculator">
+
+            <!-- =========================================
+                 1. ТИП ДОМА
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">01</span>
+
+                    <div>
+                        <h3>Тип дома</h3>
+                        <p>Выберите тип проекта</p>
+                    </div>
+                </div>
+
+                <div class="calc-field">
+                    <label for="Tip_doma">
+                        Тип дома
+                    </label>
+
+                    <select
+                        id="Tip_doma"
+                        name="Tip_doma"
+                    >
+                        <option value="45000">
+                            Одноэтажный дом
+                        </option>
+
+                        <option value="55000">
+                            Одноэтажный дом с мансардой
+                        </option>
+
+                        <option value="65000">
+                            Двухэтажный дом
+                        </option>
+                    </select>
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 2. ОСНОВНЫЕ СТЕНЫ
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">02</span>
+
+                    <div>
+                        <h3>Площадь стен</h3>
+                        <p>Основные размеры дома</p>
+                    </div>
+                </div>
+
+
+                <div class="calc-grid">
+
+                    <div class="calc-field">
+                        <label for="PSDF_dlina">
+                            Длина дома, м
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PSDF_dlina"
+                            name="PSDF_dlina"
+                            value="10"
+                            min="0"
+                            step="0.1"
+                            inputmode="decimal"
+                        >
+                    </div>
+
+
+                    <div class="calc-field">
+                        <label for="PSDF_shirina">
+                            Ширина дома, м
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PSDF_shirina"
+                            name="PSDF_shirina"
+                            value="8"
+                            min="0"
+                            step="0.1"
+                            inputmode="decimal"
+                        >
+                    </div>
+
+
+                    <div class="calc-field">
+                        <label for="PSDF_visota">
+                            Высота стен, м
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PSDF_visota"
+                            name="PSDF_visota"
+                            value="3"
+                            min="0"
+                            step="0.1"
+                            inputmode="decimal"
+                        >
+                    </div>
+
+
+                    <div class="calc-field">
+                        <label for="PSDF_ugol_naruzh">
+                            Наружные углы
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PSDF_ugol_naruzh"
+                            name="PSDF_ugol_naruzh"
+                            value="4"
+                            min="0"
+                            step="1"
+                        >
+                    </div>
+
+
+                    <div class="calc-field">
+                        <label for="PSDF_ugol_vnut">
+                            Внутренние углы
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PSDF_ugol_vnut"
+                            name="PSDF_ugol_vnut"
+                            value="0"
+                            min="0"
+                            step="1"
+                        >
+                    </div>
+
+
+                    <div class="calc-field">
+                        <label for="PSDF_kol_armopoyasov">
+                            Количество армопоясов
+                        </label>
+
+                        <input
+                            type="number"
+                            id="PSDF_kol_armopoyasov"
+                            name="PSDF_kol_armopoyasov"
+                            value="0"
+                            min="0"
+                            step="1"
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="calc-result-line">
+
+                    <span>
+                        Площадь основных стен
+                    </span>
+
+                    <strong>
+                        <span id="PSDF_ploshad_view">0</span> м²
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 3. ФРОНТОНЫ
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">03</span>
+
+                    <div>
+                        <h3>Фронтоны</h3>
+                        <p>Параметры фронтонов дома</p>
+                    </div>
+                </div>
+
+
+                <div class="calc-field">
+
+                    <label for="PFD_col_frontonov">
+                        Количество фронтонов
+                    </label>
+
+                    <select
+                        id="PFD_col_frontonov"
+                        name="PFD_col_frontonov"
+                    >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+
+                </div>
+
+
+                <div class="calc-subsection">
+
+                    <h4>Основной фронтон</h4>
+
+                    <div class="calc-grid">
+
+                        <div class="calc-field">
+                            <label for="PFD_dlina">
+                                Длина, м
+                            </label>
+
+                            <input
+                                type="number"
+                                id="PFD_dlina"
+                                name="PFD_dlina"
+                                value="10"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
+
+
+                        <div class="calc-field">
+                            <label for="PFD_shirina">
+                                Высота, м
+                            </label>
+
+                            <input
+                                type="number"
+                                id="PFD_shirina"
+                                name="PFD_shirina"
+                                value="3"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="calc-subsection"
+                    id="additionalGable1"
+                >
+
+                    <h4>
+                        Дополнительный фронтон 1
+                    </h4>
+
+                    <div class="calc-grid">
+
+                        <div class="calc-field">
+                            <label for="PFD_dlina_dop1">
+                                Длина, м
+                            </label>
+
+                            <input
+                                type="number"
+                                id="PFD_dlina_dop1"
+                                name="PFD_dlina_dop1"
+                                value="0"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
+
+
+                        <div class="calc-field">
+                            <label for="PFD_shirina_dop1">
+                                Высота, м
+                            </label>
+
+                            <input
+                                type="number"
+                                id="PFD_shirina_dop1"
+                                name="PFD_shirina_dop1"
+                                value="0"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="calc-subsection"
+                    id="additionalGable2"
+                >
+
+                    <h4>
+                        Дополнительный фронтон 2
+                    </h4>
+
+                    <div class="calc-grid">
+
+                        <div class="calc-field">
+                            <label for="PFD_dlina_dop2">
+                                Длина, м
+                            </label>
+
+                            <input
+                                type="number"
+                                id="PFD_dlina_dop2"
+                                name="PFD_dlina_dop2"
+                                value="0"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
+
+
+                        <div class="calc-field">
+                            <label for="PFD_shirina_dop2">
+                                Высота, м
+                            </label>
+
+                            <input
+                                type="number"
+                                id="PFD_shirina_dop2"
+                                name="PFD_shirina_dop2"
+                                value="0"
+                                min="0"
+                                step="0.1"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-result-line">
+
+                    <span>
+                        Площадь фронтонов
+                    </span>
+
+                    <strong>
+                        <span id="PFD_ploshad_view">0</span> м²
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 4. ОКНА
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">04</span>
+
+                    <div>
+                        <h3>Окна</h3>
+                        <p>
+                            До 9 типов окон
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="calc-field">
+
+                    <label for="PO_col">
+                        Количество видов окон
+                    </label>
+
+                    <select
+                        id="PO_col"
+                        name="PO_col"
+                    >
+                        <option value="0">Нет окон</option>
+                        <option value="1">1 тип</option>
+                        <option value="2">2 типа</option>
+                        <option value="3">3 типа</option>
+                        <option value="4">4 типа</option>
+                        <option value="5">5 типов</option>
+                        <option value="6">6 типов</option>
+                        <option value="7">7 типов</option>
+                        <option value="8">8 типов</option>
+                        <option value="9">9 типов</option>
+                    </select>
+
+                </div>
+
+
+                <div id="windowsContainer"></div>
+
+
+                <div class="calc-result-line">
+
+                    <span>
+                        Площадь всех окон
+                    </span>
+
+                    <strong>
+                        <span id="PO_ploshad_total_view">0</span> м²
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 5. ДВЕРИ
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">05</span>
+
+                    <div>
+                        <h3>Двери</h3>
+                        <p>
+                            До 4 типов дверей
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="calc-field">
+
+                    <label for="PDD">
+                        Количество видов дверей
+                    </label>
+
+                    <select
+                        id="PDD"
+                        name="PDD"
+                    >
+                        <option value="0">Нет дверей</option>
+                        <option value="1">1 тип</option>
+                        <option value="2">2 типа</option>
+                        <option value="3">3 типа</option>
+                        <option value="4">4 типа</option>
+                    </select>
+
+                </div>
+
+
+                <div id="doorsContainer"></div>
+
+
+                <div class="calc-result-line">
+
+                    <span>
+                        Площадь всех дверей
+                    </span>
+
+                    <strong>
+                        <span id="PDD_ploshad_total_view">0</span> м²
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 6. ИТОГОВАЯ ПЛОЩАДЬ
+            ========================================== -->
+
+            <section class="calc-section calc-section--highlight">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">06</span>
+
+                    <div>
+                        <h3>Итоговая площадь</h3>
+                        <p>
+                            За вычетом окон и дверей
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="big-result">
+
+                    <span id="PZVOD_total_view">
+                        0
+                    </span>
+
+                    <small>м²</small>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 7. РАСЧЁТ БЛОКОВ
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">07</span>
+
+                    <div>
+                        <h3>Расчёт блоков</h3>
+                        <p>
+                            Количество и стоимость
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="calc-results-grid">
+
+                    <div class="calc-result-card">
+                        <span>Всего блоков</span>
+                        <strong id="Itogo_kolichestvo_blokov_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Объём блоков</span>
+                        <strong id="Obiem_blokov_view">
+                            0
+                        </strong>
+                        <small>м³</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Наружные угловые</span>
+                        <strong id="Blok_uglovoy_naruzhniy_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Внутренние угловые</span>
+                        <strong id="Blok_uglovoy_vnut_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Дверные</span>
+                        <strong id="Blok_dvernogo_proema_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Оконные</span>
+                        <strong id="Blok_okonniy_chetvert_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Армопоясные</span>
+                        <strong id="Blok_doborniy_armopoyasnoy_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+
+                    <div class="calc-result-card">
+                        <span>Рядовые</span>
+                        <strong id="Blok_ryadniy_view">
+                            0
+                        </strong>
+                        <small>шт.</small>
+                    </div>
+
+                </div>
+
+
+                <div class="calc-price">
+
+                    <span>
+                        Блоки и упаковка
+                    </span>
+
+                    <strong>
+                        <span id="Itogo_stoimost_view">0</span> ₽
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 8. ДОСТАВКА
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">08</span>
+
+                    <div>
+                        <h3>Доставка</h3>
+                        <p>
+                            Расстояние рассчитывается через Яндекс Карты
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="calc-field">
+
+                    <label for="adress_dostavki">
+                        Адрес доставки
+                    </label>
+
+                    <input
+                        type="text"
+                        id="adress_dostavki"
+                        name="adress_dostavki"
+                        placeholder="г. Город, ул. Уличная, д. 1"
+                        autocomplete="street-address"
+                        required
+                    >
+
+                    <div
+                        id="deliveryStatus"
+                        class="delivery-status"
+                    >
+                        Введите адрес доставки
+                    </div>
+
+                </div>
+
+
+                <div class="delivery-info">
+
+                    <div>
+                        <span>Расстояние</span>
+
+                        <strong>
+                            <span id="distanceView">0</span> км
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <span>Машин</span>
+
+                        <strong>
+                            <span id="trucksView">0</span>
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <span>Стоимость доставки</span>
+
+                        <strong>
+                            <span id="deliveryCostView">0</span> ₽
+                        </strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 9. СТОИМОСТЬ
+            ========================================== -->
+
+            <section class="calc-section calc-section--total">
+
+                <div class="calc-section__heading">
+
+                    <span class="calc-section__number">09</span>
+
+                    <div>
+                        <h3>Итоговая стоимость</h3>
+                        <p>
+                            Ориентировочный расчёт
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="total-result">
+
+                    <div class="total-result__row">
+                        <span>
+                            Стоимость строительства
+                        </span>
+
+                        <strong>
+                            <span id="constructionCostView">
+                                0
+                            </span> ₽
+                        </strong>
+                    </div>
+
+
+                    <div class="total-result__row">
+                        <span>
+                            Доставка
+                        </span>
+
+                        <strong>
+                            <span id="deliveryCostView2">
+                                0
+                            </span> ₽
+                        </strong>
+                    </div>
+
+
+                    <div class="total-result__final">
+
+                        <span>
+                            ИТОГО
+                        </span>
+
+                        <strong>
+                            <span id="ITOGO_view">
+                                0
+                            </span> ₽
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 10. КОНТАКТЫ
+            ========================================== -->
+
+            <section class="calc-section">
+
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">10</span>
+
+                    <div>
+                        <h3>Получить расчёт</h3>
+                        <p>
+                            Оставьте контакты для отправки расчёта
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="calc-grid">
+
+                    <div class="calc-field">
+
+                        <label for="calc_name">
+                            Имя
+                        </label>
+
+                        <input
+                            type="text"
+                            id="calc_name"
+                            name="name"
+                            placeholder="Иван Иванов"
+                            autocomplete="name"
+                        >
+
+                    </div>
+
+
+                    <div class="calc-field">
+
+                        <label for="calc_phone">
+                            Телефон
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="calc_phone"
+                            name="phone"
+                            placeholder="+7 (___) ___-__-__"
+                            autocomplete="tel"
+                        >
+
+                    </div>
+
+
+                    <div class="calc-field">
+
+                        <label for="calc_mail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="calc_mail"
+                            name="mail"
+                            placeholder="mail@example.ru"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="calculator__submit"
+                >
+                    Получить расчёт
+                </button>
+
+
+                <div
+                    id="calculatorMessage"
+                    class="calculator-message"
+                    aria-live="polite"
+                ></div>
+
+            </section>
+
+
+            <!-- =========================================
+                 HIDDEN TILDA-COMPATIBLE FIELDS
+            ========================================== -->
+
+            <input
+                type="hidden"
+                name="PSDF_ploshad"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="PFD_ploshad"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="PO_ploshad_total"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="PDD_ploshad_total"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="PZVOD_total"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Itogo_kolichestvo_blokov"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Obiem_blokov"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_uglovoy_naruzhniy"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_uglovoy_naruzhniy_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_uglovoy_vnut"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_uglovoy_vnut_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_doborniy_vnut"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_doborniy_vnut_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_dvernogo_proema"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_dvernogo_proema_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_dvernogo_proema_12"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_dvernogo_proema_cena_12"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_okonniy_chetvert"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_okonniy_chetvert_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_okonniy_chetvert_12"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_okonniy_chetvert_cena_12"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="PDD_CH"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="PO_CH"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_doborniy_armopoyasnoy"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_doborniy_armopoyasnoy_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_ryadniy"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Blok_ryadniy_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Poddoni_i_upakovka"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Poddoni_i_upakovka_cena"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="rasstoyanie_kilometr"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Dostavka_fura"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Stoimost_dostavki"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Itogo_stoimost"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Obshaya_stoimost_stroitelstva"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="ITOGO"
+                value="0"
+            >
+
+            <input
+                type="hidden"
+                name="Formula"
+                value=""
+            >
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!--
+    YANDEX MAPS API
+
+    Replace YOUR_YANDEX_API_KEY with your actual API key.
+-->
+<script>
+    window.ECOBLOCK_YANDEX_API_KEY = '645baee7-ef6e-48ea-a27a-39a7a95b0815';
+</script>
+
+
+<footer class="footer">
+    <div class="container footer__top"><a class="brand brand--light" href="#top"><span
+            class="brand__mark"><i></i><i></i><i></i><i></i><i></i><i></i></span><span><strong>ЭКОБЛОК</strong><small>ПРОИЗВОДСТВО ТЕПЛОБЛОКОВ</small></span></a>
+        <nav><a href="/index">Главная</a><a href="main/catalog">Каталог</a><a href="#calculator">Калькулятор блоков</a><a
+                href="/index/about">О нас</a><a href="/index/contacts">Контакты</a></nav>
+        <div class="socials"><a href="#">VK</a><a href="#">TG</a><a href="#">YT</a></div>
+    </div>
+    <div class="container footer__bottom"><span>© 2026 ЭКОБЛОК. Все права защищены.</span><a href="#">Политика
+        конфиденциальности</a></div>
+</footer>
+<button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+<script src="js/main.js"></script>
+<script src="js/calculator.js"></script>
+
+</body>
+</html>

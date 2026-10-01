@@ -1,0 +1,139 @@
+/* Specific adjustments for the standalone catalog page */
+.catalog-page {
+    padding-top: 150px;
+    padding-bottom: 80px;
+    background: var(--paper);
+    min-height: 100vh;
+}
+
+.catalog-section-title {
+    font-size: 28px;
+    color: #1a1d1a;
+    margin: 60px 0 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.catalog-intro-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    color: #6a6f69;
+}
+
+.catalog-intro-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.catalog-intro-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--g);
+    font-weight: bold;
+}
+
+/* Grid Layouts */
+.catalog-page .products {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 20px;
+}
+
+/* Pricing Tables */
+.price-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #eaeaea;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    text-align: left;
+    min-width: 600px;
+}
+
+.price-table th {
+    background: var(--g);
+    color: #fff;
+    font-weight: 600;
+    padding: 15px 20px;
+    font-size: 13px;
+}
+
+.price-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14px;
+    color: #1a1d1a;
+}
+
+.price-table tr:last-child td {
+    border-bottom: none;
+}
+
+.price-table tbody tr:hover {
+    background: #fcfcfc;
+}
+
+.price-table td:not(:first-child) {
+    font-weight: 700;
+    color: var(--g);
+}
+
+/* Color Swatches */
+.colors-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #eaeaea;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.color-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: block;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+    .catalog-page .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .catalog-page .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .catalog-page {
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-page .products {
+        grid-template-columns: 1fr;
+    }
+}
