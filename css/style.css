@@ -642,6 +642,7 @@ p {
     color: #1a1d1a;
     margin-bottom: 8px;
     line-height: 1.2;
+    padding-left: 6px;
 }
 
 .product p {
@@ -649,6 +650,7 @@ p {
     line-height: 1.5;
     color: #1a1d1a;
     margin-bottom: 15px;
+    margin-left: 6px;
 }
 
 .product__link {
