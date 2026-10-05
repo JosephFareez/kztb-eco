@@ -1,1721 +1,274 @@
 (() => {
-
     'use strict';
 
-
-    /* =========================================================
-       BASIC HELPERS
-    ========================================================= */
-
     const form = document.getElementById('ecoCalculator');
+    if (!form) return;
 
-    if (!form) {
-        return;
-    }
-
-
-    const $ = (selector, root = form) => {
-        return root.querySelector(selector);
-    };
-
-
-    const $$ = (selector, root = form) => {
-        return [...root.querySelectorAll(selector)];
-    };
-
+    const $ = (selector, root = form) => root.querySelector(selector);     const $$ = (selector, root = form) => [...root.querySelectorAll(selector)];
 
     function number(value) {
-
-        if (value === null || value === undefined) {
-            return 0;
-        }
-
-        const normalized = String(value)
-            .replace(/\s/g, '')
-            .replace(',', '.');
-
+        if (value === null || value === undefined) return 0;
+        const normalized = String(value).replace(/\s/g, '').replace(',', '.');
         const result = parseFloat(normalized);
-
         return Number.isFinite(result) ? result : 0;
     }
 
-
     function getValue(name) {
-
         const field = form.querySelector(`[name="${name}"]`);
-
         return field ? number(field.value) : 0;
     }
 
-
     function setValue(name, value) {
-
         const field = form.querySelector(`[name="${name}"]`);
-
-        if (!field) {
-            return;
-        }
-
-        field.value = value;
+        if (field) field.value = value;
     }
-
 
     function setView(id, value, decimals = 2) {
-
         const element = document.getElementById(id);
-
-        if (!element) {
-            return;
-        }
-
-        const rounded = Number(value) || 0;
-
-        element.textContent = rounded.toLocaleString(
-            'ru-RU',
-            {
+        if (element) {
+            const rounded = Number(value) || 0;
+            element.textContent = rounded.toLocaleString('ru-RU', {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: decimals
-            }
-        );
+            });
+        }
     }
-
-
-    function money(value) {
-
-        return Math.round(Number(value) || 0)
-            .toLocaleString('ru-RU');
-    }
-
 
     function setMoneyView(id, value) {
-
         const element = document.getElementById(id);
-
-        if (!element) {
-            return;
+        if (element) {
+            element.textContent = Math.round(Number(value) || 0).toLocaleString('ru-RU');
         }
-
-        element.textContent = money(value);
     }
-
 
     /* =========================================================
-       DYNAMIC WINDOWS
-       Original Tilda calculator supports 9 window types.
+       ОКНА И ДВЕРИ
     ========================================================= */
-
-    const windowsContainer =
-        document.getElementById('windowsContainer');
-
-
     function createWindows() {
-
-        if (!windowsContainer) {
-            return;
-        }
-
-        windowsContainer.innerHTML = '';
-
-
+        const container = document.getElementById('windowsContainer');
+        if (!container) return;
+        container.innerHTML = '';
         for (let i = 1; i <= 9; i++) {
-
-            const wrapper =
-                document.createElement('div');
-
-            wrapper.className =
-                'calc-subsection window-type';
-
-            wrapper.dataset.windowType =
-                String(i);
-
-
-            wrapper.innerHTML = `
-
-                <h4>
-                    Окно ${i}
-                </h4>
-
-                <div class="calc-grid">
-
-                    <div class="calc-field">
-
-                        <label for="PO_shirina${i}">
-                            Ширина, м
-                        </label>
-
-                        <input
-                            type="number"
-                            id="PO_shirina${i}"
-                            name="PO_shirina${i}"
-                            value="0"
-                            min="0"
-                            step="0.01"
-                        >
-
-                    </div>
-
-
-                    <div class="calc-field">
-
-                        <label for="PO_visota${i}">
-                            Высота, м
-                        </label>
-
-                        <input
-                            type="number"
-                            id="PO_visota${i}"
-                            name="PO_visota${i}"
-                            value="0"
-                            min="0"
-                            step="0.01"
-                        >
-
-                    </div>
-
-
-                    <div class="calc-field">
-
-                        <label for="PO_col${i}">
-                            Количество
-                        </label>
-
-                        <input
-                            type="number"
-                            id="PO_col${i}"
-                            name="PO_col${i}"
-                            value="0"
-                            min="0"
-                            step="1"
-                        >
-
-                    </div>
-
-                </div>
-            `;
-
-
-            windowsContainer.appendChild(wrapper);
+            const w = document.createElement('div');
+            w.className = 'calc-subsection window-type';
+            w.innerHTML = `<h4>Окно ${i}</h4><div class="calc-grid">
+                <div class="calc-field"><label>Ширина, м</label><input type="number" name="PO_shirina${i}" value="0" min="0" step="0.01"></div>
+                <div class="calc-field"><label>Высота, м</label><input type="number" name="PO_visota${i}" value="0" min="0" step="0.01"></div>
+                <div class="calc-field"><label>Количество</label><input type="number" name="PO_col${i}" value="0" min="0" step="1"></div>
+            </div>`;
+            container.appendChild(w);
         }
     }
-
-
     createWindows();
 
-
-    /* =========================================================
-       DYNAMIC DOORS
-       Original Tilda calculator supports 4 door types.
-    ========================================================= */
-
-    const doorsContainer =
-        document.getElementById('doorsContainer');
-
-
     function createDoors() {
-
-        if (!doorsContainer) {
-            return;
-        }
-
-        doorsContainer.innerHTML = '';
-
-
+        const container = document.getElementById('doorsContainer');
+        if (!container) return;
+        container.innerHTML = '';
         for (let i = 1; i <= 4; i++) {
-
-            const wrapper =
-                document.createElement('div');
-
-            wrapper.className =
-                'calc-subsection door-type';
-
-            wrapper.dataset.doorType =
-                String(i);
-
-
-            wrapper.innerHTML = `
-
-                <h4>
-                    Дверь ${i}
-                </h4>
-
-                <div class="calc-grid">
-
-                    <div class="calc-field">
-
-                        <label for="PDD_shirina${i}">
-                            Ширина, м
-                        </label>
-
-                        <input
-                            type="number"
-                            id="PDD_shirina${i}"
-                            name="PDD_shirina${i}"
-                            value="0"
-                            min="0"
-                            step="0.01"
-                        >
-
-                    </div>
-
-
-                    <div class="calc-field">
-
-                        <label for="PDD_visota${i}">
-                            Высота, м
-                        </label>
-
-                        <input
-                            type="number"
-                            id="PDD_visota${i}"
-                            name="PDD_visota${i}"
-                            value="0"
-                            min="0"
-                            step="0.01"
-                        >
-
-                    </div>
-
-
-                    <div class="calc-field">
-
-                        <label for="PDD_col${i}">
-                            Количество
-                        </label>
-
-                        <input
-                            type="number"
-                            id="PDD_col${i}"
-                            name="PDD_col${i}"
-                            value="0"
-                            min="0"
-                            step="1"
-                        >
-
-                    </div>
-
-                </div>
-            `;
-
-
-            doorsContainer.appendChild(wrapper);
+            const d = document.createElement('div');
+            d.className = 'calc-subsection door-type';
+            d.innerHTML = `<h4>Дверь ${i}</h4><div class="calc-grid">
+                <div class="calc-field"><label>Ширина, м</label><input type="number" name="PDD_shirina${i}" value="0" min="0" step="0.01"></div>
+                <div class="calc-field"><label>Высота, м</label><input type="number" name="PDD_visota${i}" value="0" min="0" step="0.01"></div>
+                <div class="calc-field"><label>Количество</label><input type="number" name="PDD_col${i}" value="0" min="0" step="1"></div>
+            </div>`;
+            container.appendChild(d);
         }
     }
-
-
     createDoors();
 
-
-    /* =========================================================
-       CONDITIONAL WINDOWS
-    ========================================================= */
-
-    const windowsCount =
-        document.getElementById('PO_col');
-
-
-    function updateWindowsVisibility() {
-
-        const count =
-            number(windowsCount?.value);
-
-
-        $$('.window-type').forEach((element, index) => {
-
-            const visible =
-                index < count;
-
-            element.style.display =
-                visible ? '' : 'none';
-
-
-            if (!visible) {
-
-                $$('input', element).forEach(input => {
-                    input.value = '0';
-                });
-
-            }
-
+    function updateVisibility(countId, typeClass) {
+        const count = number(document.getElementById(countId)?.value);
+        $$(typeClass).forEach((el, index) => {             const visible = index < count;             el.style.display = visible ? '' : 'none';             if (!visible) $$
+('input', el).forEach(input => input.value = '0');
         });
     }
 
-
-    windowsCount?.addEventListener(
-        'change',
-        () => {
-
-            updateWindowsVisibility();
-            calculate();
-
-        }
-    );
-
-
     /* =========================================================
-       CONDITIONAL DOORS
+       ЦЕНЫ И НАСТРОЙКИ (ИЗ EXCEL)
     ========================================================= */
-
-    const doorsCount =
-        document.getElementById('PDD');
-
-
-    function updateDoorsVisibility() {
-
-        const count =
-            number(doorsCount?.value);
-
-
-        $$('.door-type').forEach((element, index) => {
-
-            const visible =
-                index < count;
-
-            element.style.display =
-                visible ? '' : 'none';
-
-
-            if (!visible) {
-
-                $$('input', element).forEach(input => {
-                    input.value = '0';
-                });
-
+    function getBlockConfig() {
+        const type = document.getElementById('Block_type')?.value || '400';
+        const config = {
+            '300': {
+                volumeDivisor: 43,
+                palletCapacity: 48,
+                prices: { outerCorner: 400, innerCorner: 500, internalAdditional: 120, finish: 320, door: 320, door12: 200, window: 320, window12: 200, armopoyas: 200, row: 298, packaging: 400 }
+            },
+            '400': {
+                volumeDivisor: 33,
+                palletCapacity: 36,
+                prices: { outerCorner: 400, innerCorner: 420, internalAdditional: 120, finish: 345, door: 335, door12: 240, window: 335, window12: 220, armopoyas: 260, row: 325, packaging: 400 }
             }
-
-        });
+        };
+        return config[type];
     }
 
-
-    doorsCount?.addEventListener(
-        'change',
-        () => {
-
-            updateDoorsVisibility();
-            calculate();
-
-        }
-    );
-
-
     /* =========================================================
-       CONDITIONAL GABLES
+       ПЛОЩАДИ
     ========================================================= */
+    function calculateAreas() {
+        const length = getValue('PSDF_dlina');
+        const width = getValue('PSDF_shirina');
+        const height = getValue('PSDF_visota');
+        const mainWallArea = ((length * 2) + (width * 2)) * height;
 
-    const gableCount =
-        document.getElementById(
-            'PFD_col_frontonov'
-        );
+        const gableArea = (getValue('PFD_dlina') * getValue('PFD_shirina')) +
+                          (getValue('PFD_dlina_dop1') * getValue('PFD_shirina_dop1') * 0.5) +
+                          (getValue('PFD_dlina_dop2') * getValue('PFD_shirina_dop2') * 0.5);
 
-
-    function updateGablesVisibility() {
-
-        const count =
-            number(gableCount?.value);
-
-
-        const gable1 =
-            document.getElementById(
-                'additionalGable1'
-            );
-
-        const gable2 =
-            document.getElementById(
-                'additionalGable2'
-            );
-
-
-        if (gable1) {
-
-            gable1.style.display =
-                count >= 2 ? '' : 'none';
-
-
-            if (count < 2) {
-
-                $$('input', gable1).forEach(input => {
-                    input.value = '0';
-                });
-
-            }
-        }
-
-
-        if (gable2) {
-
-            gable2.style.display =
-                count >= 3 ? '' : 'none';
-
-
-            if (count < 3) {
-
-                $$('input', gable2).forEach(input => {
-                    input.value = '0';
-                });
-
-            }
-        }
-    }
-
-
-    gableCount?.addEventListener(
-        'change',
-        () => {
-
-            updateGablesVisibility();
-            calculate();
-
-        }
-    );
-
-
-    /* =========================================================
-       MAIN WALL AREA
-
-       ORIGINAL TILDA:
-
-       ((PSDF_dlina*2)+(PSDF_shirina*2))*PSDF_visota
-    ========================================================= */
-
-    function calculateMainWallArea() {
-
-        const length =
-            getValue('PSDF_dlina');
-
-        const width =
-            getValue('PSDF_shirina');
-
-        const height =
-            getValue('PSDF_visota');
-
-
-        return (
-            (length * 2) +
-            (width * 2)
-        ) * height;
-    }
-
-
-    /* =========================================================
-       GABLE AREA
-    ========================================================= */
-
-    function calculateGableArea() {
-
-        const mainLength =
-            getValue('PFD_dlina');
-
-        const mainHeight =
-            getValue('PFD_shirina');
-
-
-        const additional1 =
-            getValue('PFD_dlina_dop1') *
-            getValue('PFD_shirina_dop1') *
-            0.5;
-
-
-        const additional2 =
-            getValue('PFD_dlina_dop2') *
-            getValue('PFD_shirina_dop2') *
-            0.5;
-
-
-        return (
-            mainLength * mainHeight
-        ) + additional1 + additional2;
-    }
-
-
-    /* =========================================================
-       WINDOWS AREA
-
-       Preserves the original Tilda behavior,
-       including the duplicated type 4.
-    ========================================================= */
-
-    function calculateWindowArea() {
-
-        let total = 0;
-
-
+        let windowArea = 0; let poCH = 0;
         for (let i = 1; i <= 9; i++) {
-
-            const width =
-                getValue(`PO_shirina${i}`);
-
-            const height =
-                getValue(`PO_visota${i}`);
-
-            const count =
-                getValue(`PO_col${i}`);
-
-
-            total +=
-                width *
-                height *
-                count;
-
-
-            /*
-                Original Tilda formula contains
-                PO4 twice.
-            */
-
-            if (i === 4) {
-
-                total +=
-                    width *
-                    height *
-                    count;
-
-            }
-
+            const wArea = getValue(`PO_shirina${i}`) * getValue(`PO_visota${i}`) * getValue(`PO_col${i}`);
+            windowArea += wArea;
+            if (i === 4) windowArea += wArea; // старая логика Tilda
+            poCH += getValue(`PO_shirina${i}`) * getValue(`PO_col${i}`);
         }
 
-
-        return total;
-    }
-
-
-    /* =========================================================
-       DOORS AREA
-    ========================================================= */
-
-    function calculateDoorArea() {
-
-        let total = 0;
-
-
+        let doorArea = 0; let pddCH = 0;
         for (let i = 1; i <= 4; i++) {
-
-            const width =
-                getValue(`PDD_shirina${i}`);
-
-            const height =
-                getValue(`PDD_visota${i}`);
-
-            const count =
-                getValue(`PDD_col${i}`);
-
-
-            total +=
-                width *
-                height *
-                count;
+            doorArea += getValue(`PDD_shirina${i}`) * getValue(`PDD_visota${i}`) * getValue(`PDD_col${i}`);
+            pddCH += getValue(`PDD_shirina${i}`) * getValue(`PDD_col${i}`);
         }
 
-
-        return total;
+        return { mainWallArea, gableArea, windowArea, doorArea, poCH, pddCH, totalWallArea: mainWallArea + gableArea - windowArea - doorArea };
     }
-
 
     /* =========================================================
-       PDD_CH
+       РАСЧЕТ
     ========================================================= */
-
-    function calculatePDD_CH() {
-
-        let total = 0;
-
-
-        for (let i = 1; i <= 4; i++) {
-
-            total +=
-                getValue(`PDD_shirina${i}`) *
-                getValue(`PDD_col${i}`);
-
-        }
-
-
-        return total;
-    }
-
-
-    /* =========================================================
-       PO_CH
-    ========================================================= */
-
-    function calculatePO_CH() {
-
-        let total = 0;
-
-
-        for (let i = 1; i <= 9; i++) {
-
-            total +=
-                getValue(`PO_shirina${i}`) *
-                getValue(`PO_col${i}`);
-
-        }
-
-
-        return total;
-    }
-
-
-    /* =========================================================
-       BLOCK CALCULATIONS
-    ========================================================= */
-
-    function calculateTotalBlocks(
-        totalWallArea
-    ) {
-
-        return totalWallArea * 12.5;
-    }
-
-
-    function calculateBlockVolume(
-        totalBlocks
-    ) {
-
-        return totalBlocks / 33;
-    }
-
-
-    function calculateOuterCornerBlocks() {
-
-        return (
-            getValue('PSDF_visota') /
-            0.2
-        ) * getValue('PSDF_ugol_naruzh');
-    }
-
-
-    function calculateOuterCornerPrice(
-        quantity
-    ) {
-
-        return quantity * 400;
-    }
-
-
-    function calculateInnerCornerBlocks() {
-
-        return (
-            getValue('PSDF_visota') /
-            0.2
-        ) * getValue('PSDF_ugol_vnut');
-    }
-
-
-    function calculateInnerCornerPrice(
-        quantity
-    ) {
-
-        return quantity * 350;
-    }
-
-
-    function calculateInternalAdditionalBlocks(
-        innerCorners
-    ) {
-
-        return innerCorners;
-    }
-
-
-    function calculateInternalAdditionalPrice(
-        quantity
-    ) {
-
-        return quantity * 120;
-    }
-
-
-    function calculateDoorBlocks() {
-
-        let total = 0;
-
-
-        for (let i = 1; i <= 4; i++) {
-
-            total +=
-                getValue(`PDD_visota${i}`) *
-                getValue(`PDD_col${i}`);
-
-        }
-
-
-        return total / 0.2;
-    }
-
-
-    function calculateDoorBlockPrice(
-        quantity
-    ) {
-
-        return quantity * 350;
-    }
-
-
-    /*
-        These two categories existed in the
-        original formula but have no source
-        fields in the calculator.
-    */
-
-    const doorBlock12 = 0;
-    const doorBlock12Price = 0;
-
-
-    function calculateWindowBlocks() {
-
-        let total = 0;
-
-
-        for (let i = 1; i <= 9; i++) {
-
-            total +=
-                getValue(`PO_visota${i}`) *
-                getValue(`PO_col${i}`);
-
-        }
-
-
-        return total / 0.2;
-    }
-
-
-    function calculateWindowBlockPrice(
-        quantity
-    ) {
-
-        return quantity * 350;
-    }
-
-
-    const windowBlock12 = 0;
-    const windowBlock12Price = 0;
-
-
-    /* =========================================================
-       ARMOPoyAS BLOCKS
-    ========================================================= */
-
-    function calculateArmopoyasBlocks(
-        poCH,
-        pddCH
-    ) {
-
-        const length =
-            getValue('PSDF_dlina');
-
-        const width =
-            getValue('PSDF_shirina');
-
-        const armopoyasCount =
-            getValue('PSDF_kol_armopoyasov');
-
-
-        let openingCounts = 0;
-
-
-        for (let i = 1; i <= 4; i++) {
-
-            openingCounts +=
-                getValue(`PDD_col${i}`);
-
-        }
-
-
-        for (let i = 1; i <= 9; i++) {
-
-            openingCounts +=
-                getValue(`PO_col${i}`);
-
-        }
-
-
-        return (
-
-            (
-                length *
-                width *
-                armopoyasCount
-            ) / 0.4
-
-        ) + (
-
-            (
-                poCH +
-                pddCH
-            ) / 0.4
-
-            +
-
-            openingCounts * 0.9
-
-        );
-    }
-
-
-    function calculateArmopoyasPrice(
-        quantity
-    ) {
-
-        return quantity * 200;
-    }
-
-
-    /* =========================================================
-       ROW BLOCKS
-    ========================================================= */
-
-    function calculateRowBlocks(
-        totalBlocks,
-        outerCorners,
-        innerCorners,
-        doorBlocks,
-        windowBlocks,
-        armopoyasBlocks
-    ) {
-
-        return (
-
-            totalBlocks * 1.02
-
-        ) - (
-
-            outerCorners * 1.5
-
-        ) - (
-
-            innerCorners * 0.5
-
-        ) - (
-
-            doorBlocks
-
-        ) - (
-
-            doorBlock12 / 2
-
-        ) - (
-
-            windowBlocks
-
-        ) - (
-
-            windowBlock12 / 2
-
-        ) - (
-
-            armopoyasBlocks
-
-        );
-    }
-
-
-    function calculateRowBlockPrice(
-        quantity
-    ) {
-
-        return quantity * 345;
-    }
-
-
-    /* =========================================================
-       PALLETS / PACKAGING
-    ========================================================= */
-
-    function calculatePackaging(
-        totalWallArea
-    ) {
-
-        return (
-            totalWallArea *
-            12.5
-        ) / 36;
-    }
-
-
-    function calculatePackagingPrice(
-        quantity
-    ) {
-
-        return quantity * 400;
-    }
-
-
-    /* =========================================================
-       MAIN CALCULATION
-    ========================================================= */
-
     function calculate() {
-
-        /* ---------------------------------------------
-           MAIN AREAS
-        --------------------------------------------- */
-
-        const mainWallArea =
-            calculateMainWallArea();
-
-
-        const gableArea =
-            calculateGableArea();
-
-
-        const windowArea =
-            calculateWindowArea();
-
-
-        const doorArea =
-            calculateDoorArea();
-
-
-        /*
-            Final wall area:
-
-            Main walls
-            +
-            Gables
-            -
-            Windows
-            -
-            Doors
-        */
-
-        const totalWallArea =
-            mainWallArea +
-            gableArea -
-            windowArea -
-            doorArea;
-
-
-        /* ---------------------------------------------
-           OPENING AUXILIARY VALUES
-        --------------------------------------------- */
-
-        const pddCH =
-            calculatePDD_CH();
-
-
-        const poCH =
-            calculatePO_CH();
-
-
-        /* ---------------------------------------------
-           BLOCK QUANTITIES
-        --------------------------------------------- */
-
-        const totalBlocks =
-            calculateTotalBlocks(
-                totalWallArea
-            );
-
-
-        const blockVolume =
-            calculateBlockVolume(
-                totalBlocks
-            );
-
-
-        const outerCorners =
-            calculateOuterCornerBlocks();
-
-
-        const outerCornerPrice =
-            calculateOuterCornerPrice(
-                outerCorners
-            );
-
-
-        const innerCorners =
-            calculateInnerCornerBlocks();
-
-
-        const innerCornerPrice =
-            calculateInnerCornerPrice(
-                innerCorners
-            );
-
-
-        const internalAdditional =
-            calculateInternalAdditionalBlocks(
-                innerCorners
-            );
-
-
-        const internalAdditionalPrice =
-            calculateInternalAdditionalPrice(
-                internalAdditional
-            );
-
-
-        const doorBlocks =
-            calculateDoorBlocks();
-
-
-        const doorBlockPrice =
-            calculateDoorBlockPrice(
-                doorBlocks
-            );
-
-
-        const windowBlocks =
-            calculateWindowBlocks();
-
-
-        const windowBlockPrice =
-            calculateWindowBlockPrice(
-                windowBlocks
-            );
-
-
-        const armopoyasBlocks =
-            calculateArmopoyasBlocks(
-                poCH,
-                pddCH
-            );
-
-
-        const armopoyasPrice =
-            calculateArmopoyasPrice(
-                armopoyasBlocks
-            );
-
-
-        const rowBlocks =
-            calculateRowBlocks(
-                totalBlocks,
-                outerCorners,
-                innerCorners,
-                doorBlocks,
-                windowBlocks,
-                armopoyasBlocks
-            );
-
-
-        const rowBlockPrice =
-            calculateRowBlockPrice(
-                rowBlocks
-            );
-
-
-        /* ---------------------------------------------
-           PALLETS / PACKAGING
-        --------------------------------------------- */
-
-        const packaging =
-            calculatePackaging(
-                totalWallArea
-            );
-
-
-        const packagingPrice =
-            calculatePackagingPrice(
-                packaging
-            );
-
-
-        /* ---------------------------------------------
-           COSTS
-        --------------------------------------------- */
-
-        /*
-            COST OF BLOCKS
-
-            IMPORTANT:
-            Packaging is NOT included here anymore.
-
-            The original formula contained
-            outerCornerPrice twice.
-            This is preserved exactly.
-        */
-
-        const blocksCost =
-
-            outerCornerPrice +
-
-            outerCornerPrice +
-
-            internalAdditionalPrice +
-
-            doorBlockPrice +
-
-            doorBlock12Price +
-
-            windowBlockPrice +
-
-            windowBlock12Price +
-
-            armopoyasPrice +
-
-            rowBlockPrice;
-
-
-        /*
-            PACKAGING
-
-            Packaging and pallets are calculated separately.
-        */
-
-        const materialsPackagingCost =
-            packagingPrice;
-
-
-        /*
-            TOTAL MATERIALS COST
-
-            Blocks + packaging.
-
-            This value is kept in the original
-            hidden field "Itogo_stoimost".
-        */
-
-        const materialsCost =
-            blocksCost +
-            materialsPackagingCost;
-
-
-        /* ---------------------------------------------
-           HOUSE CONSTRUCTION COST
-        --------------------------------------------- */
-
-        const houseTypePrice =
-            getValue('Tip_doma');
-
-
-        const length =
-            getValue('PSDF_dlina');
-
-
-        const width =
-            getValue('PSDF_shirina');
-
-
-        const constructionCost =
-            houseTypePrice *
-            length *
-            width;
-
-
-        /* ---------------------------------------------
-           FINAL TOTAL
-
-           DELIVERY REMOVED.
-
-           The existing calculator logic defines
-           the final total as the construction cost.
-        --------------------------------------------- */
-
-        const finalTotal =
-            constructionCost;
-
-
-        /* ---------------------------------------------
-           UPDATE HIDDEN FIELDS
-        --------------------------------------------- */
-
-        setValue(
-            'PSDF_ploshad',
-            mainWallArea
-        );
-
-
-        setValue(
-            'PFD_ploshad',
-            gableArea
-        );
-
-
-        setValue(
-            'PO_ploshad_total',
-            windowArea
-        );
-
-
-        setValue(
-            'PDD_ploshad_total',
-            doorArea
-        );
-
-
-        setValue(
-            'PZVOD_total',
-            totalWallArea
-        );
-
-
-        setValue(
-            'Itogo_kolichestvo_blokov',
-            totalBlocks
-        );
-
-
-        setValue(
-            'Obiem_blokov',
-            blockVolume
-        );
-
-
-        setValue(
-            'Blok_uglovoy_naruzhniy',
-            outerCorners
-        );
-
-
-        setValue(
-            'Blok_uglovoy_naruzhniy_cena',
-            outerCornerPrice
-        );
-
-
-        setValue(
-            'Blok_uglovoy_vnut',
-            innerCorners
-        );
-
-
-        setValue(
-            'Blok_uglovoy_vnut_cena',
-            innerCornerPrice
-        );
-
-
-        setValue(
-            'Blok_doborniy_vnut',
-            internalAdditional
-        );
-
-
-        setValue(
-            'Blok_doborniy_vnut_cena',
-            internalAdditionalPrice
-        );
-
-
-        setValue(
-            'Blok_dvernogo_proema',
-            doorBlocks
-        );
-
-
-        setValue(
-            'Blok_dvernogo_proema_cena',
-            doorBlockPrice
-        );
-
-
-        setValue(
-            'Blok_dvernogo_proema_12',
-            doorBlock12
-        );
-
-
-        setValue(
-            'Blok_dvernogo_proema_cena_12',
-            doorBlock12Price
-        );
-
-
-        setValue(
-            'Blok_okonniy_chetvert',
-            windowBlocks
-        );
-
-
-        setValue(
-            'Blok_okonniy_chetvert_cena',
-            windowBlockPrice
-        );
-
-
-        setValue(
-            'Blok_okonniy_chetvert_12',
-            windowBlock12
-        );
-
-
-        setValue(
-            'Blok_okonniy_chetvert_cena_12',
-            windowBlock12Price
-        );
-
-
-        setValue(
-            'PDD_CH',
-            pddCH
-        );
-
-
-        setValue(
-            'PO_CH',
-            poCH
-        );
-
-
-        setValue(
-            'Blok_doborniy_armopoyasnoy',
-            armopoyasBlocks
-        );
-
-
-        setValue(
-            'Blok_doborniy_armopoyasnoy_cena',
-            armopoyasPrice
-        );
-
-
-        setValue(
-            'Blok_ryadniy',
-            rowBlocks
-        );
-
-
-        setValue(
-            'Blok_ryadniy_cena',
-            rowBlockPrice
-        );
-
-
-        setValue(
-            'Poddoni_i_upakovka',
-            packaging
-        );
-
-
-        setValue(
-            'Poddoni_i_upakovka_cena',
-            packagingPrice
-        );
-
-
-        /*
-            Original hidden field:
-            total cost of blocks + packaging.
-        */
-
-        setValue(
-            'Itogo_stoimost',
-            materialsCost
-        );
-
-
-        setValue(
-            'Obshaya_stoimost_stroitelstva',
-            constructionCost
-        );
-
-
-        setValue(
-            'ITOGO',
-            finalTotal
-        );
-
-
-        /* ---------------------------------------------
-           FORMULA FIELD
-
-           DELIVERY REMOVED
-        --------------------------------------------- */
-
-        setValue(
-            'Formula',
-            'PSDF_dlina*PSDF_shirina*Tip_doma'
-        );
-
-
-        /* ---------------------------------------------
-           UPDATE VISIBLE RESULTS
-        --------------------------------------------- */
-
-        setView(
-            'PSDF_ploshad_view',
-            mainWallArea,
-            2
-        );
-
-
-        setView(
-            'PFD_ploshad_view',
-            gableArea,
-            2
-        );
-
-
-        setView(
-            'PO_ploshad_total_view',
-            windowArea,
-            2
-        );
-
-
-        setView(
-            'PDD_ploshad_total_view',
-            doorArea,
-            2
-        );
-
-
-        setView(
-            'PZVOD_total_view',
-            totalWallArea,
-            2
-        );
-
-
-        setView(
-            'Itogo_kolichestvo_blokov_view',
-            totalBlocks,
-            0
-        );
-
-
-        setView(
-            'Obiem_blokov_view',
-            blockVolume,
-            2
-        );
-
-
-        setView(
-            'Blok_uglovoy_naruzhniy_view',
-            outerCorners,
-            0
-        );
-
-
-        setView(
-            'Blok_uglovoy_vnut_view',
-            innerCorners,
-            0
-        );
-
-
-        setView(
-            'Blok_dvernogo_proema_view',
-            doorBlocks,
-            0
-        );
-
-
-        setView(
-            'Blok_okonniy_chetvert_view',
-            windowBlocks,
-            0
-        );
-
-
-        setView(
-            'Blok_doborniy_armopoyasnoy_view',
-            armopoyasBlocks,
-            0
-        );
-
-
-        setView(
-            'Blok_ryadniy_view',
-            rowBlocks,
-            0
-        );
-
-
-        /* ---------------------------------------------
-           THREE SEPARATE COSTS
-        --------------------------------------------- */
-
-        /*
-            1. COST OF BLOCKS
-        */
-
-        setMoneyView(
-            'blocksCostView',
-            blocksCost
-        );
-
-
-        /*
-            2. PACKAGING AND PALLETS
-        */
-
-        setMoneyView(
-            'packagingCostView',
-            materialsPackagingCost
-        );
-
-
-        /*
-            3. CONSTRUCTION COST
-        */
-
-        setMoneyView(
-            'constructionCostView',
-            constructionCost
-        );
-
-
-        /*
-            FINAL TOTAL
-        */
-
-        setMoneyView(
-            'ITOGO_view',
-            finalTotal
-        );
-
+        const cfg = getBlockConfig();
+        const p = cfg.prices;
+        const areas = calculateAreas();
+
+        // КОЛИЧЕСТВО БЛОКОВ
+        const totalBlocks = Math.ceil(areas.totalWallArea * 12.5);
+        const blockVolume = totalBlocks / cfg.volumeDivisor;
+
+        const outerCorners = Math.ceil((getValue('PSDF_visota') / 0.2) * getValue('PSDF_ugol_naruzh'));
+        const innerCorners = Math.ceil((getValue('PSDF_visota') / 0.2) * getValue('PSDF_ugol_vnut'));
+        const internalAdditional = innerCorners;
+        const finishBlocks = 0;
+
+        let doorBlocksRaw = 0, openingCounts = 0;
+        for (let i = 1; i <= 4; i++) { doorBlocksRaw += getValue(`PDD_visota${i}`) * getValue(`PDD_col${i}`); openingCounts += getValue(`PDD_col${i}`); }
+        const doorBlocks = Math.ceil(doorBlocksRaw / 0.2);
+        const doorBlock12 = doorBlocks;
+
+        let windowBlocksRaw = 0;
+        for (let i = 1; i <= 9; i++) { windowBlocksRaw += getValue(`PO_visota${i}`) * getValue(`PO_col${i}`); openingCounts += getValue(`PO_col${i}`); }
+        const windowBlocks = Math.ceil(windowBlocksRaw / 0.2);
+        const windowBlock12 = windowBlocks;
+
+        const perimeter = (getValue('PSDF_dlina') * 2) + (getValue('PSDF_shirina') * 2);
+        const armopoyasBlocks = Math.ceil(((perimeter * getValue('PSDF_kol_armopoyasov')) / 0.4) + ((areas.poCH + areas.pddCH) / 0.4 + openingCounts * 0.9));
+
+        const rowBlocks = Math.ceil((totalBlocks * 1.02) - (outerCorners * 1.5) - (innerCorners * 0.5) - finishBlocks - doorBlocks - (doorBlock12 * 0.5) - windowBlocks - (windowBlock12 * 0.5) - armopoyasBlocks);
+
+        const packaging = Math.ceil(totalBlocks / cfg.palletCapacity);
+
+        // ЦЕНЫ
+        const blocksCost = (outerCorners * 2 * p.outerCorner) + (innerCorners * p.innerCorner) + (internalAdditional * p.internalAdditional) + (finishBlocks * p.finish) + (doorBlocks * p.door) + (doorBlock12 * p.door12) + (windowBlocks * p.window) + (windowBlock12 * p.window12) + (armopoyasBlocks * p.armopoyas) + (rowBlocks * p.row);
+        const packagingPrice = packaging * p.packaging;
+        const constructionCost = getValue('Tip_doma') * getValue('PSDF_dlina') * getValue('PSDF_shirina');
+
+        // ДОСТАВКА
+        const isDelivery = document.getElementById('Delivery_need')?.value === 'yes';
+        const distance = getValue('Delivery_km');
+        const trucksCount = Math.ceil(packaging / 20); // 1 фура везет до 20 паллет
+        const deliveryCost = (isDelivery && distance > 0) ? trucksCount * distance * 150 : 0;
+
+        if (document.getElementById('distanceFieldWrap')) {
+            document.getElementById('distanceFieldWrap').style.display = isDelivery ? 'block' : 'none';
+            document.getElementById('addressFieldWrap').style.display = isDelivery ? 'block' : 'none';
+            document.getElementById('deliveryResultLine').style.display = isDelivery ? 'flex' : 'none';
+            document.getElementById('deliveryTotalRow').style.display = isDelivery ? 'flex' : 'none';
+        }
+
+        const finalTotal = blocksCost + packagingPrice + constructionCost + deliveryCost;
+
+        // ВЫВОД НА ЭКРАН
+        setView('PSDF_ploshad_view', areas.mainWallArea, 2);
+        setView('PFD_ploshad_view', areas.gableArea, 2);
+        setView('PO_ploshad_total_view', areas.windowArea, 2);
+        setView('PDD_ploshad_total_view', areas.doorArea, 2);
+        setView('PZVOD_total_view', areas.totalWallArea, 2);
+
+        setView('Itogo_kolichestvo_blokov_view', totalBlocks, 0);
+        setView('Obiem_blokov_view', blockVolume, 2);
+        setView('Blok_uglovoy_naruzhniy_view', outerCorners, 0);
+        setView('Blok_uglovoy_vnut_view', innerCorners, 0);
+        setView('Blok_doborniy_vnut_view', internalAdditional, 0);
+        setView('Blok_finishniy_view', finishBlocks, 0);
+        setView('Blok_dvernogo_proema_view', doorBlocks, 0);
+        setView('Blok_dvernogo_proema_12_view', doorBlock12, 0);
+        setView('Blok_okonniy_chetvert_view', windowBlocks, 0);
+        setView('Blok_okonniy_chetvert_12_view', windowBlock12, 0);
+        setView('Blok_doborniy_armopoyasnoy_view', armopoyasBlocks, 0);
+        setView('Blok_ryadniy_view', rowBlocks, 0);
+
+        setMoneyView('blocksCostView', blocksCost);
+        setView('palletsCountView', packaging, 0);
+        setMoneyView('packagingCostView', packagingPrice);
+        setView('trucksCountView', trucksCount, 0);
+        setMoneyView('deliveryCostView', deliveryCost);
+        setMoneyView('finalDeliveryCostView', deliveryCost);
+        setMoneyView('constructionCostView', constructionCost);
+        setMoneyView('ITOGO_view', finalTotal);
+
+        // СКРЫТЫЕ ПОЛЯ ДЛЯ ПОЧТЫ
+        setValue('Itogo_kolichestvo_blokov', totalBlocks);
+        setValue('Obiem_blokov', blockVolume);
+        setValue('Blok_uglovoy_naruzhniy', outerCorners);
+        setValue('Blok_uglovoy_vnut', innerCorners);
+        setValue('Blok_doborniy_vnut', internalAdditional);
+        setValue('Blok_finishniy', finishBlocks);
+        setValue('Blok_dvernogo_proema', doorBlocks);
+        setValue('Blok_dvernogo_proema_12', doorBlock12);
+        setValue('Blok_okonniy_chetvert', windowBlocks);
+        setValue('Blok_okonniy_chetvert_12', windowBlock12);
+        setValue('Blok_doborniy_armopoyasnoy', armopoyasBlocks);
+        setValue('Blok_ryadniy', rowBlocks);
+        setValue('Poddoni_i_upakovka', packaging);
+        setValue('Dostavka_fura', trucksCount);
+        setValue('Itogo_stoimost_materialov', blocksCost + packagingPrice);
+        setValue('ITOGO', finalTotal);
     }
 
+    form.addEventListener('input', e => { if (e.target.matches('input, select')) calculate(); });
+    form.addEventListener('change', e => { if (e.target.matches('input, select')) calculate(); });
 
-    /* =========================================================
-       INPUT LISTENERS
-    ========================================================= */
+    // AJAX ОТПРАВКА НА MAIL.PHP
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const statusDiv = document.getElementById('calculatorMessage');
 
-    form.addEventListener(
-        'input',
-        event => {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
 
-            if (
-                event.target.matches(
-                    'input, select'
-                )
-            ) {
+        fetch('mail.php', { method: 'POST', body: new FormData(form) })
+        .then(res => res.text().then(text => {
+            if (res.ok) { statusDiv.style.color = '#6fba81'; statusDiv.textContent = 'Спасибо! Ваша заявка отправлена.'; }
+            else { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка: ' + text; }
+        }))
+        .catch(() => { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка сети. Попробуйте позже.'; })
+        .finally(() => { submitBtn.disabled = false; submitBtn.textContent = 'Получить расчёт'; });
+    });
 
-                calculate();
+    document.getElementById('PO_col')?.addEventListener('change', () => { updateVisibility('PO_col', '.window-type'); calculate(); });
+    document.getElementById('PDD')?.addEventListener('change', () => { updateVisibility('PDD', '.door-type'); calculate(); });
+    document.getElementById('PFD_col_frontonov')?.addEventListener('change', () => {
+        const count = number(document.getElementById('PFD_col_frontonov').value);
+        if (document.getElementById('additionalGable1')) { document.getElementById('additionalGable1').style.display = count >= 2 ? '' : 'none'; }
+        if (document.getElementById('additionalGable2')) { document.getElementById('additionalGable2').style.display = count >= 3 ? '' : 'none'; }
+        calculate();
+    });
 
-            }
-
-        }
-    );
-
-
-    form.addEventListener(
-        'change',
-        event => {
-
-            if (
-                event.target.matches(
-                    'input, select'
-                )
-            ) {
-
-                calculate();
-
-            }
-
-        }
-    );
-
-
-    /* =========================================================
-       FORM SUBMIT
-    ========================================================= */
-
-    form.addEventListener(
-        'submit',
-        event => {
-
-            event.preventDefault();
-
-
-            /*
-                Round the same values that the original
-                calculator rounded before submission.
-            */
-
-            const roundedPackaging =
-                Math.ceil(
-                    getValue(
-                        'Poddoni_i_upakovka'
-                    )
-                );
-
-
-            const roundedRowBlocks =
-                Math.ceil(
-                    getValue(
-                        'Blok_ryadniy'
-                    )
-                );
-
-
-            setValue(
-                'Poddoni_i_upakovka',
-                roundedPackaging
-            );
-
-
-            setValue(
-                'Blok_ryadniy',
-                roundedRowBlocks
-            );
-
-
-            /*
-                DELIVERY HAS BEEN REMOVED.
-
-                No Yandex Maps.
-                No address.
-                No distance.
-                No trucks.
-                No delivery cost.
-            */
-
-
-            const construction =
-                getValue(
-                    'Obshaya_stoimost_stroitelstva'
-                );
-
-
-            const final =
-                construction;
-
-
-            setValue(
-                'ITOGO',
-                final
-            );
-
-
-            setMoneyView(
-                'constructionCostView',
-                construction
-            );
-
-
-            setMoneyView(
-                'ITOGO_view',
-                final
-            );
-
-
-            const message =
-                document.getElementById(
-                    'calculatorMessage'
-                );
-
-
-            if (message) {
-
-                message.textContent =
-                    'Расчёт сформирован.';
-
-            }
-
-
-            console.log(
-                'ECOblock calculator data:',
-                Object.fromEntries(
-                    new FormData(form)
-                )
-            );
-
-        }
-    );
-
-
-    /* =========================================================
-       INITIAL STATE
-    ========================================================= */
-
-    updateWindowsVisibility();
-
-    updateDoorsVisibility();
-
-    updateGablesVisibility();
-
+    updateVisibility('PO_col', '.window-type');
+    updateVisibility('PDD', '.door-type');
     calculate();
 
 })();
