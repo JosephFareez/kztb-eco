@@ -240,7 +240,7 @@
     form.addEventListener('input', e => { if (e.target.matches('input, select')) calculate(); });
     form.addEventListener('change', e => { if (e.target.matches('input, select')) calculate(); });
 
-    // AJAX ОТПРАВКА НА MAIL.PHP
+    // AJAX ОТПРАВКА ЧЕРЕЗ FORMSPREE
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const submitBtn = form.querySelector('button[type="submit"]');
@@ -249,14 +249,57 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
 
-        fetch('mail.php', { method: 'POST', body: new FormData(form) })
-        .then(res => res.text().then(text => {
-            if (res.ok) { statusDiv.style.color = '#6fba81'; statusDiv.textContent = 'Спасибо! Ваша заявка отправлена.'; }
-            else { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка: ' + text; }
-        }))
-        .catch(() => { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка сети. Попробуйте позже.'; })
-        .finally(() => { submitBtn.disabled = false; submitBtn.textContent = 'Получить расчёт'; });
+        // Берем URL прямо из атрибута action вашей формы
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                statusDiv.style.color = '#6fba81';
+                statusDiv.textContent = 'Спасибо! Ваш расчёт успешно отправлен.';
+                form.reset(); // Очищаем форму после успеха
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        statusDiv.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        statusDiv.textContent = 'Произошла ошибка при отправке.';
+                    }
+                });
+                statusDiv.style.color = '#ff8b94';
+            }
+        })
+        .catch(() => {
+            statusDiv.style.color = '#ff8b94';
+            statusDiv.textContent = 'Ошибка сети. Попробуйте позже.';
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Получить расчёт';
+        });
     });
+    // AJAX ОТПРАВКА НА MAIL.PHP
+    //
+    // form.addEventListener('submit', function(e) {
+    //     e.preventDefault();
+    //     const submitBtn = form.querySelector('button[type="submit"]');
+    //     const statusDiv = document.getElementById('calculatorMessage');
+    //
+    //     submitBtn.disabled = true;
+    //     submitBtn.textContent = 'Отправка...';
+    //
+    //     fetch('mail.php', { method: 'POST', body: new FormData(form) })
+    //     .then(res => res.text().then(text => {
+    //         if (res.ok) { statusDiv.style.color = '#6fba81'; statusDiv.textContent = 'Спасибо! Ваша заявка отправлена.'; }
+    //         else { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка: ' + text; }
+    //     }))
+    //     .catch(() => { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка сети. Попробуйте позже.'; })
+    //     .finally(() => { submitBtn.disabled = false; submitBtn.textContent = 'Получить расчёт'; });
+    // });
 
     document.getElementById('PO_col')?.addEventListener('change', () => { updateVisibility('PO_col', '.window-type'); calculate(); });
     document.getElementById('PDD')?.addEventListener('change', () => { updateVisibility('PDD', '.door-type'); calculate(); });

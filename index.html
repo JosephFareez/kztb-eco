@@ -526,25 +526,35 @@
             <div class="contact-form-col reveal reveal--1">
                 <h2>Свяжитесь с нами!</h2>
 
-                <form class="contact-form" id="contactForm" action="mail.php" method="POST">
+                <!--                <form class="contact-form" id="contactForm" action="mail.php" method="POST">-->
+                <form id="ecoCalculator" class="eco-calculator" action="https://formspree.io/f/mljgevaz" method="POST">
+
                     <div class="form-group">
                         <label>Электронный адрес</label>
-                        <input type="email" name="email" placeholder="ivanov@mail.ru">
+                        <label>
+                            <input type="email" name="email" placeholder="ivanov@mail.ru">
+                        </label>
                     </div>
 
                     <div class="form-group">
                         <label>Телефон</label>
-                        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+                        <label>
+                            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+                        </label>
                     </div>
 
                     <div class="form-group">
                         <label>Имя</label>
-                        <input type="text" name="name" placeholder="Ваше имя" required>
+                        <label>
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </label>
                     </div>
 
                     <div class="form-group">
                         <label>Сообщение</label>
-                        <textarea name="message" placeholder="Ваше сообщение" rows="2"></textarea>
+                        <label>
+                            <textarea name="message" placeholder="Ваше сообщение" rows="2"></textarea>
+                        </label>
                     </div>
 
                     <button type="submit" class="btn btn--light">Отправить</button>
