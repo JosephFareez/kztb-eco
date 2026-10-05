@@ -99,7 +99,7 @@
                 <div class="calc-grid">
                     <div class="calc-field">
                         <label for="Tip_doma">Тип дома</label>
-                        <select id="Tip_doma" name="Tip_doma">
+                        <select id="Tip_doma" name="Тип_дома">
                             <option value="45000">Одноэтажный дом</option>
                             <option value="55000">Одноэтажный дом с мансардой</option>
                             <option value="65000">Двухэтажный дом</option>
@@ -108,7 +108,7 @@
 
                     <div class="calc-field">
                         <label for="Block_type">Толщина теплоблока</label>
-                        <select id="Block_type" name="Block_type">
+                        <select id="Block_type" name="Толщина_блока">
                             <option value="400" selected>ТБ-400 (400 мм)</option>
                             <option value="300">ТБ-300 (300 мм)</option>
                         </select>
@@ -127,12 +127,12 @@
                 </div>
 
                 <div class="calc-grid">
-                    <div class="calc-field"><label for="PSDF_dlina">Длина дома, м</label><input type="number" id="PSDF_dlina" name="PSDF_dlina" value="10" min="0" step="0.1" inputmode="decimal"></div>
-                    <div class="calc-field"><label for="PSDF_shirina">Ширина дома, м</label><input type="number" id="PSDF_shirina" name="PSDF_shirina" value="8" min="0" step="0.1" inputmode="decimal"></div>
-                    <div class="calc-field"><label for="PSDF_visota">Высота стен, м</label><input type="number" id="PSDF_visota" name="PSDF_visota" value="3" min="0" step="0.1" inputmode="decimal"></div>
-                    <div class="calc-field"><label for="PSDF_ugol_naruzh">Наружные углы</label><input type="number" id="PSDF_ugol_naruzh" name="PSDF_ugol_naruzh" value="4" min="0" step="1"></div>
-                    <div class="calc-field"><label for="PSDF_ugol_vnut">Внутренние углы</label><input type="number" id="PSDF_ugol_vnut" name="PSDF_ugol_vnut" value="0" min="0" step="1"></div>
-                    <div class="calc-field"><label for="PSDF_kol_armopoyasov">Кол-во армопоясов</label><input type="number" id="PSDF_kol_armopoyasov" name="PSDF_kol_armopoyasov" value="0" min="0" step="1"></div>
+                    <div class="calc-field"><label for="PSDF_dlina">Длина дома, м</label><input type="number" id="PSDF_dlina" name="Длина_м" value="10" min="0" step="0.1" inputmode="decimal"></div>
+                    <div class="calc-field"><label for="PSDF_shirina">Ширина дома, м</label><input type="number" id="PSDF_shirina" name="Ширина_м" value="8" min="0" step="0.1" inputmode="decimal"></div>
+                    <div class="calc-field"><label for="PSDF_visota">Высота стен, м</label><input type="number" id="PSDF_visota" name="Высота_м" value="3" min="0" step="0.1" inputmode="decimal"></div>
+                    <div class="calc-field"><label for="PSDF_ugol_naruzh">Наружные углы</label><input type="number" id="PSDF_ugol_naruzh" name="Углы_наружные" value="4" min="0" step="1"></div>
+                    <div class="calc-field"><label for="PSDF_ugol_vnut">Внутренние углы</label><input type="number" id="PSDF_ugol_vnut" name="Углы_внутренние" value="0" min="0" step="1"></div>
+                    <div class="calc-field"><label for="PSDF_kol_armopoyasov">Кол-во армопоясов</label><input type="number" id="PSDF_kol_armopoyasov" name="Армопояса" value="0" min="0" step="1"></div>
                 </div>
 
                 <div class="calc-result-line">
@@ -153,7 +153,7 @@
 
                 <div class="calc-field">
                     <label for="PFD_col_frontonov">Количество фронтонов</label>
-                    <select id="PFD_col_frontonov" name="PFD_col_frontonov">
+                    <select id="PFD_col_frontonov" name="Фронтонов_шт">
                         <option value="1">1</option><option value="2">2</option><option value="3">3</option>
                     </select>
                 </div>
@@ -161,26 +161,26 @@
                 <div class="calc-subsection">
                     <h4>Основной фронтон</h4>
                     <div class="calc-grid">
-                        <div class="calc-field"><label for="PFD_dlina">Длина, м</label><input type="number" id="PFD_dlina" name="PFD_dlina" value="10" min="0" step="0.1"></div>
-                        <div class="calc-field"><label for="PFD_shirina">Высота, м</label><input type="number" id="PFD_shirina" name="PFD_shirina" value="3" min="0" step="0.1"></div>
+                        <div class="calc-field"><label for="PFD_dlina">Длина, м</label><input type="number" id="PFD_dlina" value="10" min="0" step="0.1"></div>
+                        <div class="calc-field"><label for="PFD_shirina">Высота, м</label><input type="number" id="PFD_shirina" value="3" min="0" step="0.1"></div>
                     </div>
                 </div>
 
                 <div class="calc-subsection" id="additionalGable1">
                     <h4>Дополнительный фронтон 1</h4>
                     <div class="calc-grid">
-                        <div class="calc-field"><label>Длина, м</label><label for="PFD_dlina_dop1"></label><input type="number" id="PFD_dlina_dop1" name="PFD_dlina_dop1" value="0" min="0" step="0.1"></div>
+                        <div class="calc-field"><label>Длина, м</label><label for="PFD_dlina_dop1"></label><input type="number" id="PFD_dlina_dop1" value="0" min="0" step="0.1"></div>
                         <div class="calc-field"><label>Высота, м</label><label
-                                for="PFD_shirina_dop1"></label><input type="number" id="PFD_shirina_dop1" name="PFD_shirina_dop1" value="0" min="0" step="0.1"></div>
+                                for="PFD_shirina_dop1"></label><input type="number" id="PFD_shirina_dop1" value="0" min="0" step="0.1"></div>
                     </div>
                 </div>
 
                 <div class="calc-subsection" id="additionalGable2">
                     <h4>Дополнительный фронтон 2</h4>
                     <div class="calc-grid">
-                        <div class="calc-field"><label>Длина, м</label><label for="PFD_dlina_dop2"></label><input type="number" id="PFD_dlina_dop2" name="PFD_dlina_dop2" value="0" min="0" step="0.1"></div>
+                        <div class="calc-field"><label>Длина, м</label><label for="PFD_dlina_dop2"></label><input type="number" id="PFD_dlina_dop2" value="0" min="0" step="0.1"></div>
                         <div class="calc-field"><label>Высота, м</label><label
-                                for="PFD_shirina_dop2"></label><input type="number" id="PFD_shirina_dop2" name="PFD_shirina_dop2" value="0" min="0" step="0.1"></div>
+                                for="PFD_shirina_dop2"></label><input type="number" id="PFD_shirina_dop2" value="0" min="0" step="0.1"></div>
                     </div>
                 </div>
 
@@ -202,7 +202,7 @@
 
                 <div class="calc-field">
                     <label for="PO_col">Количество видов окон</label>
-                    <select id="PO_col" name="PO_col">
+                    <select id="PO_col" name="Окон_видов">
                         <option value="0">Нет окон</option>
                         <option value="1">1 тип</option><option value="2">2 типа</option><option value="3">3 типа</option>
                         <option value="4">4 типа</option><option value="5">5 типов</option><option value="6">6 типов</option>
@@ -228,7 +228,7 @@
 
                 <div class="calc-field">
                     <label for="PDD">Количество видов дверей</label>
-                    <select id="PDD" name="PDD">
+                    <select id="PDD" name="Дверей_видов">
                         <option value="0">Нет дверей</option>
                         <option value="1">1 тип</option><option value="2">2 типа</option><option value="3">3 типа</option><option value="4">4 типа</option>
                     </select>
@@ -280,10 +280,35 @@
                 </div>
             </section>
 
-            <!-- 8. ДОСТАВКА -->
+            <!-- 8. СТРОИТЕЛЬНЫЕ МАТЕРИАЛЫ (НОВАЯ СЕКЦИЯ) -->
             <section class="calc-section">
                 <div class="calc-section__heading">
                     <span class="calc-section__number">08</span>
+                    <div>
+                        <h3>Строительные материалы</h3>
+                        <p>Всё необходимое для кладки стен</p>
+                    </div>
+                </div>
+
+                <div class="calc-results-grid">
+                    <div class="calc-result-card"><span>Смесь кладочная М-200</span><strong id="mat_mix_view">0</strong><small>меш.</small></div>
+                    <div class="calc-result-card"><span>Пена монтажная</span><strong id="mat_foam_view">0</strong><small>шт.</small></div>
+                    <div class="calc-result-card"><span>Сетка базальтовая</span><strong id="mat_mesh_view">0</strong><small>м.п.</small></div>
+                    <div class="calc-result-card"><span>Гидроизол (рубероид)</span><strong id="mat_hydro_view">0</strong><small>рул.</small></div>
+                    <div class="calc-result-card"><span>Очиститель пены</span><strong id="mat_cleaner_view">0</strong><small>шт.</small></div>
+                    <div class="calc-result-card"><span>Пистолет для пены</span><strong id="mat_gun_view">0</strong><small>шт.</small></div>
+                </div>
+
+                <div class="calc-price" style="margin-top: 25px;">
+                    <span>Итого по материалам</span>
+                    <strong><span id="materialsCostView">0</span> ₽</strong>
+                </div>
+            </section>
+
+            <!-- 9. ДОСТАВКА -->
+            <section class="calc-section">
+                <div class="calc-section__heading">
+                    <span class="calc-section__number">09</span>
                     <div>
                         <h3>Доставка</h3>
                         <p>г. Киров, ул. Некрасова, 28 (150 ₽/км)</p>
@@ -293,7 +318,7 @@
                 <div class="calc-grid">
                     <div class="calc-field">
                         <label for="Delivery_need">Нужна доставка?</label>
-                        <select id="Delivery_need" name="Delivery_need">
+                        <select id="Delivery_need" name="Доставка_нужна">
                             <option value="yes">Да, нужна доставка</option>
                             <option value="no" selected>Нет, самовывоз</option>
                         </select>
@@ -301,7 +326,7 @@
 
                     <div class="calc-field" id="distanceFieldWrap" style="display:none;">
                         <label for="Delivery_km">Расстояние от завода, км</label>
-                        <input type="number" id="Delivery_km" name="Delivery_km" value="0" min="0" step="1">
+                        <input type="number" id="Delivery_km" name="Расстояние_км" value="0" min="0" step="1">
                         <small style="display:block; margin-top:5px; color:#87918c; font-size:10px;">
                             <a href="https://yandex.ru/maps/?rtext=54.072213,34.298194~&rtt=auto" target="_blank" style="color:var(--g); text-decoration:underline;">Узнать расстояние в Яндекс.Картах</a>
                         </small>
@@ -309,7 +334,7 @@
 
                     <div class="calc-field" id="addressFieldWrap" style="display:none;">
                         <label for="Delivery_address">Точный адрес объекта</label>
-                        <input type="text" id="Delivery_address" name="Delivery_address" placeholder="Калуга, ул. Ленина 1">
+                        <input type="text" id="Delivery_address" name="Адрес_доставки" placeholder="Калуга, ул. Ленина 1">
                     </div>
                 </div>
 
@@ -319,10 +344,10 @@
                 </div>
             </section>
 
-            <!-- 9. СТОИМОСТЬ -->
+            <!-- 10. СТОИМОСТЬ -->
             <section class="calc-section calc-section--total">
                 <div class="calc-section__head">
-                    <span class="calc-section__number">09</span>
+                    <span class="calc-section__number">10</span>
                     <div>
                         <h3>Стоимость</h3>
                         <p>Ориентировочный расчёт</p>
@@ -337,6 +362,10 @@
                     <div class="total-result__row">
                         <span>Упаковка и поддоны (<span id="palletsCountView">0</span> шт)</span>
                         <strong><span id="packagingCostView">0</span> ₽</strong>
+                    </div>
+                    <div class="total-result__row">
+                        <span>Стройматериалы (Смесь, Пена, Сетка)</span>
+                        <strong><span id="finalConsumablesCostView">0</span> ₽</strong>
                     </div>
                     <div class="total-result__row" id="deliveryTotalRow" style="display:none;">
                         <span>Доставка</span>
@@ -353,10 +382,10 @@
                 </div>
             </section>
 
-            <!-- 10. КОНТАКТЫ -->
+            <!-- 11. КОНТАКТЫ -->
             <section class="calc-section">
                 <div class="calc-section__heading">
-                    <span class="calc-section__number">10</span>
+                    <span class="calc-section__number">11</span>
                     <div>
                         <h3>Получить расчёт</h3>
                         <p>Оставьте контакты для отправки расчёта</p>
@@ -364,32 +393,30 @@
                 </div>
 
                 <div class="calc-grid">
-                    <div class="calc-field"><label for="calc_name">Имя</label><input type="text" id="calc_name" name="name" placeholder="Иван Иванов" required></div>
-                    <div class="calc-field"><label for="calc_phone">Телефон</label><input type="tel" id="calc_phone" name="phone" placeholder="+7 (___) ___-__-__" required></div>
-                    <div class="calc-field"><label for="calc_mail">Email</label><input type="email" id="calc_mail" name="email" placeholder="mail@example.ru"></div>
+                    <div class="calc-field"><label for="calc_name">Имя</label><input type="text" id="calc_name" name="Имя_клиента" placeholder="Иван Иванов" required></div>
+                    <div class="calc-field"><label for="calc_phone">Телефон</label><input type="tel" id="calc_phone" name="Телефон" placeholder="+7 (___) ___-__-__" required></div>
+                    <div class="calc-field"><label for="calc_mail">Email</label><input type="email" id="calc_mail" name="Email" placeholder="mail@example.ru"></div>
                 </div>
 
                 <button type="submit" class="calculator__submit">Получить расчёт</button>
                 <div id="calculatorMessage" class="calculator-message" aria-live="polite"></div>
             </section>
 
-            <!-- Скрытые поля для отправки -->
-            <input type="hidden" name="Itogo_kolichestvo_blokov" value="0">
-            <input type="hidden" name="Obiem_blokov" value="0">
-            <input type="hidden" name="Blok_uglovoy_naruzhniy" value="0">
-            <input type="hidden" name="Blok_uglovoy_vnut" value="0">
-            <input type="hidden" name="Blok_doborniy_vnut" value="0">
-            <input type="hidden" name="Blok_finishniy" value="0">
-            <input type="hidden" name="Blok_dvernogo_proema" value="0">
-            <input type="hidden" name="Blok_dvernogo_proema_12" value="0">
-            <input type="hidden" name="Blok_okonniy_chetvert" value="0">
-            <input type="hidden" name="Blok_okonniy_chetvert_12" value="0">
-            <input type="hidden" name="Blok_doborniy_armopoyasnoy" value="0">
-            <input type="hidden" name="Blok_ryadniy" value="0">
-            <input type="hidden" name="Poddoni_i_upakovka" value="0">
-            <input type="hidden" name="Dostavka_fura" value="0">
-            <input type="hidden" name="Itogo_stoimost_materialov" value="0">
-            <input type="hidden" name="ITOGO" value="0">
+            <!-- Скрытые поля для отправки в Formspree (перевел на русский для красоты писем) -->
+            <input type="hidden" name="Площадь_стен_м2" value="0">
+            <input type="hidden" name="Итого_Блоков_шт" value="0">
+            <input type="hidden" name="Объем_Блоков_м3" value="0">
+            <input type="hidden" name="Количество_Поддонов" value="0">
+
+            <input type="hidden" name="Материалы_Смесь_М200_меш" value="0">
+            <input type="hidden" name="Материалы_Пена_шт" value="0">
+            <input type="hidden" name="Материалы_Сетка_мп" value="0">
+            <input type="hidden" name="Материалы_Гидроизол_рул" value="0">
+
+            <input type="hidden" name="Количество_Фур" value="0">
+            <input type="hidden" name="Итого_Стоимость_Блоков" value="0">
+            <input type="hidden" name="Итого_Стройматериалы_руб" value="0">
+            <input type="hidden" name="ИТОГО_К_ОПЛАТЕ_РУБ" value="0">
         </form>
     </div>
 </section>

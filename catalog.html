@@ -12,17 +12,15 @@
           rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/catalog.css">
-
 </head>
 <body>
 
-<a class="skip-link" href="#main">К содержанию</a>
+<a class="skip-link" href="#catalog">К содержанию</a>
 <header class="header" id="top">
     <div class="container header__inner">
         <!-- Logo Area -->
-        <a class="brand" href="#top" aria-label="KZTB">
+        <a class="brand" href="index.html" aria-label="KZTB">
             <img src="assets/images/logo.png" alt="KZTB Логотип" class="brand__logo">
-
             <div class="brand__text">
                 <strong>KZTB</strong>
                 <span>теплоблоки<br>для строительства</span>
@@ -31,11 +29,11 @@
 
         <!-- Navigation -->
         <nav class="nav" aria-label="Основная навигация">
-            <a href="index.html" class="is-active">Главная</a>
-            <a href="#catalog">Каталог</a>
-            <a href="#about">О производстве</a>
+            <a href="index.html">Главная</a>
+            <a href="catalog.html" class="is-active">Каталог</a>
+            <a href="index.html#about">О производстве</a>
             <a href="calculator.html">Калькулятор блоков</a>
-            <a href="#contacts">Контакты</a>
+            <a href="index.html#contacts">Контакты</a>
         </nav>
 
         <!-- Phone and Button -->
@@ -60,16 +58,25 @@
         </button>
     </div>
     <div class="custom-shape-divider-bottom">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-             preserveAspectRatio="none">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
                   opacity=".25" class="shape-fill-cream"></path>
-
         </svg>
     </div>
 </header>
 
-<main class="catalog-page">
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="index.html#about">О производстве</a>
+    <a href="calculator.html">Калькулятор блоков</a>
+    <a href="index.html#contacts">Контакты</a>
+    <a href="tel:+78001234567" class="mobile-menu__phone">+7 (800) 123-45-67</a>
+    <a href="index.html#contacts" class="btn btn--dark mobile-menu__button">Заказать звонок</a>
+</div>
+
+<main class="catalog-page" id="catalog">
     <div class="container">
 
         <span class="eyebrow">КАТАЛОГ ПРОДУКЦИИ</span>
@@ -85,9 +92,9 @@
         <!-- PRICING TABLES -->
         <!-- ========================================= -->
 
-
-        <!-- ТЕПЛОБЛОКИ -->
-        <h2 class="catalog-section-title">Прайс-лист: Теплоблоки</h2>
+        <!-- 1. ТЕПЛОБЛОКИ -->
+        <h2 class="catalog-section-title" id="teploblok" style="scroll-margin-top: 100px;">Прайс-лист: Теплоблоки
+            (Пенополистирол)</h2>
 
         <div class="price-table-wrapper">
             <table class="price-table">
@@ -100,7 +107,6 @@
                     <th>ТБ-400 Цветной</th>
                 </tr>
                 </thead>
-
                 <tbody>
                 <tr>
                     <td>Рядовой</td>
@@ -109,7 +115,6 @@
                     <td>260 ₽</td>
                     <td>280 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Рядовой половинчатый</td>
                     <td>120 ₽</td>
@@ -117,7 +122,6 @@
                     <td>130 ₽</td>
                     <td>140 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Угловой наружный</td>
                     <td>300 ₽</td>
@@ -125,7 +129,6 @@
                     <td>300 ₽</td>
                     <td>400 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Поясной</td>
                     <td>150 ₽</td>
@@ -133,7 +136,6 @@
                     <td>150 ₽</td>
                     <td>180 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Проемов</td>
                     <td>240 ₽</td>
@@ -141,7 +143,6 @@
                     <td>260 ₽</td>
                     <td>280 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Проемов половинчатый</td>
                     <td>150 ₽</td>
@@ -149,7 +150,6 @@
                     <td>150 ₽</td>
                     <td>180 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Дверного проема</td>
                     <td>240 ₽</td>
@@ -157,7 +157,6 @@
                     <td>260 ₽</td>
                     <td>280 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Дверного проема половинчатый</td>
                     <td>150 ₽</td>
@@ -169,89 +168,35 @@
             </table>
         </div>
 
-
-        <!-- ========================================= -->
-        <!-- МРАМОРНЫЕ ФАСАДЫ -->
-        <!-- ========================================= -->
-
-        <h2 class="catalog-section-title">Прайс-лист: Мраморные фасады</h2>
+        <!-- 2. ИНОБЛОК -->
+        <h2 class="catalog-section-title" id="inoblok" style="scroll-margin-top: 100px;">Прайс-лист: Иноблок
+            (Керамзитный сердечник)</h2>
 
         <div class="price-table-wrapper">
             <table class="price-table">
                 <thead>
                 <tr>
                     <th>Вид блока</th>
-                    <th>Мрамор ТБ-300</th>
-                    <th>Мрамор ТБ-400</th>
+                    <th>Иноблок ТБ-300</th>
+                    <th>Иноблок ТБ-400</th>
                 </tr>
                 </thead>
-
-                <tbody>
-                <tr>
-                    <td>Рядовой</td>
-                    <td>400 ₽</td>
-                    <td>500 ₽</td>
-                </tr>
-
-                <tr>
-                    <td>Рядовой половинчатый</td>
-                    <td>240 ₽</td>
-                    <td>290 ₽</td>
-                </tr>
-
-                <tr>
-                    <td>Угловой наружный</td>
-                    <td>500 ₽</td>
-                    <td>600 ₽</td>
-                </tr>
-
-                <tr>
-                    <td>Угловой внутренний</td>
-                    <td>400 ₽</td>
-                    <td>500 ₽</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-        <!-- ========================================= -->
-        <!-- ЭКОБЛОК С КЕРАМОГРАНИТНЫМ ФАСАДОМ -->
-        <!-- ========================================= -->
-
-        <h2 class="catalog-section-title">
-            Прайс-лист: Экоблок с керамогранитным фасадом
-        </h2>
-
-        <div class="price-table-wrapper">
-            <table class="price-table">
-                <thead>
-                <tr>
-                    <th>Вид блока</th>
-                    <th>Экоблок ТБ-300</th>
-                    <th>Экоблок ТБ-400</th>
-                </tr>
-                </thead>
-
                 <tbody>
                 <tr>
                     <td>Рядовой</td>
                     <td>340 ₽</td>
                     <td>440 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Рядовой половинчатый</td>
                     <td>180 ₽</td>
                     <td>240 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Угловой наружный</td>
                     <td>450 ₽</td>
                     <td>450 ₽</td>
                 </tr>
-
                 <tr>
                     <td>Угловой внутренний</td>
                     <td>340 ₽</td>
@@ -260,11 +205,102 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- 3. ЭКОБЛОК -->
+        <h2 class="catalog-section-title" id="ecoblok" style="scroll-margin-top: 100px;">Прайс-лист: Экоблок (Керамзитный сердечник) с фасадом
+            мраморной крошки</h2>
+
+        <div class="price-table-wrapper">
+            <table class="price-table">
+                <thead>
+                <tr>
+                    <th>Вид блока</th>
+                    <th>Экоблок ТБ-300 (Мрамор)</th>
+                    <th>Экоблок ТБ-400 (Мрамор)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Рядовой</td>
+                    <td>400 ₽</td>
+                    <td>500 ₽</td>
+                </tr>
+                <tr>
+                    <td>Рядовой половинчатый</td>
+                    <td>240 ₽</td>
+                    <td>290 ₽</td>
+                </tr>
+                <tr>
+                    <td>Угловой наружный</td>
+                    <td>500 ₽</td>
+                    <td>600 ₽</td>
+                </tr>
+                <tr>
+                    <td>Угловой внутренний</td>
+                    <td>400 ₽</td>
+                    <td>500 ₽</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4. СТРОИТЕЛЬНЫЕ МАТЕРИАЛЫ -->
+        <h2 class="catalog-section-title" id="materials" style="scroll-margin-top: 100px;">Прайс-лист: Строительные
+            материалы</h2>
+
+        <div class="price-table-wrapper">
+            <table class="price-table">
+                <thead>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Ед. изм.</th>
+                    <th>Цена за ед., руб.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Кладочная смесь М-200</td>
+                    <td>меш.</td>
+                    <td>195 ₽</td>
+                </tr>
+                <tr>
+                    <td>Пена монтажная</td>
+                    <td>баллон</td>
+                    <td>510 ₽</td>
+                </tr>
+                <tr>
+                    <td>Сетка базальтопластиковая 2,5мм яч 25*25 (рулон 0,25*50м)</td>
+                    <td>м.п.</td>
+                    <td>30 ₽</td>
+                </tr>
+                <tr>
+                    <td>Гидроизол</td>
+                    <td>рулон</td>
+                    <td>860 ₽</td>
+                </tr>
+                <tr>
+                    <td>Очиститель пены</td>
+                    <td>шт.</td>
+                    <td>200 ₽</td>
+                </tr>
+                <tr>
+                    <td>Пистолет монтажный</td>
+                    <td>шт.</td>
+                    <td>800 ₽</td>
+                </tr>
+                <tr>
+                    <td>Поддоны и упаковка</td>
+                    <td>шт.</td>
+                    <td>400 ₽</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!-- COLORS -->
         <h2 class="catalog-section-title">Цвета блоков</h2>
         <div class="colors-grid">
-            <div class="color-item"><span class="color-dot" style="background:#ffffff; border: 1px solid #eee;"></span>
-                Белый
+            <div class="color-item"><span class="color-dot" style="background:#ffffff; border: 1px solid #eee;"></span>Белый
             </div>
             <div class="color-item"><span class="color-dot" style="background:#e8d5b5;"></span> Песочный</div>
             <div class="color-item"><span class="color-dot" style="background:#f1c232;"></span> Желтый</div>
@@ -273,42 +309,39 @@
         </div>
 
         <!-- MAIN BLOCKS SPECS -->
-        <h2 class="catalog-section-title">Виды блоков и характеристики</h2>
+        <h2 class="catalog-section-title" id="specs" style="scroll-margin-top: 100px;">Виды блоков и характеристики</h2>
         <div class="products">
             <article class="product">
-                <div class="product__visual"><img src="assets/images/70336169.png.webp"
-                                                  alt="Блок рядовой" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/70336169.png.webp" alt="Блок рядовой"
+                                                  loading="lazy"></div>
                 <h3>Блок рядовой</h3>
                 <p>Размер: 200х200х300<br>Вес: 11 кг<br>В поддоне: 100 шт.</p>
             </article>
 
             <article class="product">
-                <div class="product__visual"><img
-                        src="assets/images/45114983.png.webp"
-                        alt="Блок рядовой половинчатый" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/45114983.png.webp" alt="Блок рядовой половинчатый"
+                                                  loading="lazy"></div>
                 <h3>Блок рядовой половинчитый</h3>
                 <p>Размер: 200х200х300<br>Вес: 11 кг<br>В поддоне: 100 шт.</p>
             </article>
 
             <article class="product">
-                <div class="product__visual"><img
-                        src="assets/images/53789145.png.webp"
-                        alt="Блок угловой наружный" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/53789145.png.webp" alt="Блок угловой наружный"
+                                                  loading="lazy"></div>
                 <h3>Блок угловой наружный</h3>
                 <p>Размер: 500х200х300<br>Вес: 27 кг<br>В поддоне: 40 шт.</p>
             </article>
 
             <article class="product">
-                <div class="product__visual"><img
-                        src="assets/images/83271419.png.webp"
-                        alt="Блок угловой внутренний" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/83271419.png.webp" alt="Блок угловой внутренний"
+                                                  loading="lazy"></div>
                 <h3>Блок угловой внутренний</h3>
                 <p>Размер: 500х200х300<br>Вес: 25 кг<br>В поддоне: 40 шт.</p>
             </article>
 
             <article class="product">
-                <div class="product__visual"><img src="assets/images/58065314.png.webp"
-                                                  alt="Блок поясной" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/58065314.png.webp" alt="Блок поясной"
+                                                  loading="lazy"></div>
                 <h3>Блок поясной</h3>
                 <p>Размер: 400х200х120<br>Вес: 18 кг<br>В поддоне: 64 шт.</p>
             </article>
@@ -321,8 +354,8 @@
             </article>
 
             <article class="product">
-                <div class="product__visual"><img src="assets/images/65432999.png.webp"
-                                                  alt="Блок дверного проема" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/65432999.png.webp" alt="Блок дверного проема"
+                                                  loading="lazy"></div>
                 <h3>Блок дверного проема</h3>
                 <p>Размер: 400х200х120<br>Вес: 18 кг<br>В поддоне: 64 шт.</p>
             </article>
@@ -335,8 +368,8 @@
             </article>
 
             <article class="product">
-                <div class="product__visual"><img src="assets/images/19806957.png.webp"
-                                                  alt="Блок оконных проемов" loading="lazy"></div>
+                <div class="product__visual"><img src="assets/images/19806957.png.webp" alt="Блок оконных проемов"
+                                                  loading="lazy"></div>
                 <h3>Блок оконных проемов</h3>
                 <p>Размер: 400х190х400<br>Вес: 22 кг<br>В поддоне: 48 шт.</p>
             </article>
@@ -346,98 +379,55 @@
         <h2 class="catalog-section-title">Фасады блоков</h2>
         <div class="products">
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/balkan.jpg"
-                         alt="Балканский камень" loading="lazy">
+                <div class="product__visual"><img src="assets/images/balkan.jpg" alt="Балканский камень" loading="lazy">
                 </div>
-                <h3>Балканский камень</h3>
-            </article>
-
+                <h3>Балканский камень</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/piramidka.jpg"
-                         alt="Гладкий камень" loading="lazy">
+                <div class="product__visual"><img src="assets/images/piramidka.jpg" alt="Гладкий камень" loading="lazy">
                 </div>
-                <h3>Гладкий камень</h3>
-            </article>
-
+                <h3>Гладкий камень</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/slanec.jpg"
-                         alt="Дикий камень" loading="lazy">
+                <div class="product__visual"><img src="assets/images/slanec.jpg" alt="Дикий камень" loading="lazy">
                 </div>
-                <h3>Дикий камень</h3>
-            </article>
-
+                <h3>Дикий камень</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/rostov.jpg"
-                         alt="Ростовский камень" loading="lazy">
+                <div class="product__visual"><img src="assets/images/rostov.jpg" alt="Ростовский камень" loading="lazy">
                 </div>
-                <h3>Ростовский камень</h3>
-            </article>
-
+                <h3>Ростовский камень</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/izvest.jpg"
-                         alt="Известняк" loading="lazy">
-                </div>
-                <h3>Известняк</h3>
-            </article>
+                <div class="product__visual"><img src="assets/images/izvest.jpg" alt="Известняк" loading="lazy"></div>
+                <h3>Известняк</h3></article>
         </div>
 
         <!-- MARBLE FACADES -->
         <h2 class="catalog-section-title">Мраморный фасад</h2>
         <div class="products">
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/image.png"
-                         alt="Белый мрамор" loading="lazy">
-                </div>
-                <h3>Белый мрамор</h3>
-            </article>
-
+                <div class="product__visual"><img src="assets/images/image.png" alt="Белый мрамор" loading="lazy"></div>
+                <h3>Белый мрамор</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/image%20(1).png"
-                         alt="Антрацит" loading="lazy">
+                <div class="product__visual"><img src="assets/images/image%20(1).png" alt="Антрацит" loading="lazy">
                 </div>
-                <h3>Антрацит</h3>
-            </article>
-
+                <h3>Антрацит</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/image%20(2).png" alt="Графит" loading="lazy">
-                </div>
-                <h3>Графит</h3>
-            </article>
-
+                <div class="product__visual"><img src="assets/images/image%20(2).png" alt="Графит" loading="lazy"></div>
+                <h3>Графит</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/image%20(3).png" alt="Малахит" loading="lazy">
+                <div class="product__visual"><img src="assets/images/image%20(3).png" alt="Малахит" loading="lazy">
                 </div>
-                <h3>Малахит</h3>
-            </article>
-
+                <h3>Малахит</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/image%20(4).png" alt="Кварцит" loading="lazy">
+                <div class="product__visual"><img src="assets/images/image%20(4).png" alt="Кварцит" loading="lazy">
                 </div>
-                <h3>Кварцит</h3>
-            </article>
-
+                <h3>Кварцит</h3></article>
             <article class="product">
-                <div class="product__visual">
-                    <img src="assets/images/image%20(5).png"
-                         alt="РОССО ВЕРОНа" loading="lazy">
+                <div class="product__visual"><img src="assets/images/image%20(5).png" alt="РОССО ВЕРОНа" loading="lazy">
                 </div>
-                <h3>РОССО ВЕРОНА</h3>
-            </article>
+                <h3>РОССО ВЕРОНА</h3></article>
         </div>
 
     </div>
 </main>
-
 
 <!-- FOOTER -->
 <footer class="footer">

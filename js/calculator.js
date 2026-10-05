@@ -94,25 +94,28 @@
             '300': {
                 volumeDivisor: 43,
                 palletCapacity: 48,
-                prices: { outerCorner: 400, innerCorner: 500, internalAdditional: 120, finish: 320, door: 320, door12: 200, window: 320, window12: 200, armopoyas: 200, row: 298, packaging: 400 }
+                prices: { outerCorner: 400, innerCorner: 500, internalAdditional: 120, finish: 320, door: 320, door12: 200, window: 320, window12: 200, armopoyas: 200, row: 298, packaging: 400 },
+                materials: { mix: 3.9, foam: 1.6, mesh: 6.7 } // Коэффициенты для 300мм
             },
             '400': {
                 volumeDivisor: 33,
                 palletCapacity: 36,
-                prices: { outerCorner: 400, innerCorner: 420, internalAdditional: 120, finish: 345, door: 335, door12: 240, window: 335, window12: 220, armopoyas: 260, row: 325, packaging: 400 }
+                prices: { outerCorner: 400, innerCorner: 420, internalAdditional: 120, finish: 345, door: 335, door12: 240, window: 335, window12: 220, armopoyas: 260, row: 325, packaging: 400 },
+                materials: { mix: 3.9, foam: 1.93, mesh: 5.0 } // Коэффициенты для 400мм
             }
         };
         return config[type];
     }
 
     /* =========================================================
-       ПЛОЩАДИ
+       ПЛОЩАДИ И ПЕРИМЕТР
     ========================================================= */
     function calculateAreas() {
         const length = getValue('PSDF_dlina');
         const width = getValue('PSDF_shirina');
         const height = getValue('PSDF_visota');
-        const mainWallArea = ((length * 2) + (width * 2)) * height;
+        const perimeter = (length * 2) + (width * 2);
+        const mainWallArea = perimeter * height;
 
         const gableArea = (getValue('PFD_dlina') * getValue('PFD_shirina')) +
                           (getValue('PFD_dlina_dop1') * getValue('PFD_shirina_dop1') * 0.5) +
@@ -122,7 +125,7 @@
         for (let i = 1; i <= 9; i++) {
             const wArea = getValue(`PO_shirina${i}`) * getValue(`PO_visota${i}`) * getValue(`PO_col${i}`);
             windowArea += wArea;
-            if (i === 4) windowArea += wArea; // старая логика Tilda
+            if (i === 4) windowArea += wArea; // сохранение старой логики Tilda
             poCH += getValue(`PO_shirina${i}`) * getValue(`PO_col${i}`);
         }
 
@@ -132,18 +135,19 @@
             pddCH += getValue(`PDD_shirina${i}`) * getValue(`PDD_col${i}`);
         }
 
-        return { mainWallArea, gableArea, windowArea, doorArea, poCH, pddCH, totalWallArea: mainWallArea + gableArea - windowArea - doorArea };
+        return { perimeter, mainWallArea, gableArea, windowArea, doorArea, poCH, pddCH, totalWallArea: mainWallArea + gableArea - windowArea - doorArea };
     }
 
     /* =========================================================
-       РАСЧЕТ
+       ОСНОВНОЙ РАСЧЕТ
     ========================================================= */
     function calculate() {
         const cfg = getBlockConfig();
         const p = cfg.prices;
+        const m = cfg.materials;
         const areas = calculateAreas();
 
-        // КОЛИЧЕСТВО БЛОКОВ
+        // 1. КОЛИЧЕСТВО БЛОКОВ
         const totalBlocks = Math.ceil(areas.totalWallArea * 12.5);
         const blockVolume = totalBlocks / cfg.volumeDivisor;
 
@@ -162,19 +166,36 @@
         const windowBlocks = Math.ceil(windowBlocksRaw / 0.2);
         const windowBlock12 = windowBlocks;
 
-        const perimeter = (getValue('PSDF_dlina') * 2) + (getValue('PSDF_shirina') * 2);
-        const armopoyasBlocks = Math.ceil(((perimeter * getValue('PSDF_kol_armopoyasov')) / 0.4) + ((areas.poCH + areas.pddCH) / 0.4 + openingCounts * 0.9));
+        const armopoyasBlocks = Math.ceil(((areas.perimeter * getValue('PSDF_kol_armopoyasov')) / 0.4) + ((areas.poCH + areas.pddCH) / 0.4 + openingCounts * 0.9));
 
         const rowBlocks = Math.ceil((totalBlocks * 1.02) - (outerCorners * 1.5) - (innerCorners * 0.5) - finishBlocks - doorBlocks - (doorBlock12 * 0.5) - windowBlocks - (windowBlock12 * 0.5) - armopoyasBlocks);
 
         const packaging = Math.ceil(totalBlocks / cfg.palletCapacity);
 
-        // ЦЕНЫ
+        // 2. СТРОИТЕЛЬНЫЕ МАТЕРИАЛЫ (Формулы из Excel)
+        const mixCount = Math.ceil(blockVolume * m.mix);
+        const foamCount = Math.ceil(blockVolume * m.foam);
+        let meshCount = Math.round((blockVolume * m.mesh) / 50) * 50;
+        if (meshCount === 0 && blockVolume > 0) meshCount = 50; // Минимум 1 рулон
+
+        const hydroCount = Math.ceil(areas.perimeter / 37.5);
+        const cleanerCount = Math.ceil(foamCount / 5);
+        const gunCount = Math.ceil(blockVolume * 0.05);
+
+        const mixCost = mixCount * 195;
+        const foamCost = foamCount * 510;
+        const meshCost = meshCount * 30;
+        const hydroCost = hydroCount * 860;
+        const cleanerCost = cleanerCount * 200;
+        const gunCost = gunCount * 800;
+
+        const totalMaterialsCost = mixCost + foamCost + meshCost + hydroCost + cleanerCost + gunCost;
+
+        // 3. СТОИМОСТИ И ДОСТАВКА
         const blocksCost = (outerCorners * 2 * p.outerCorner) + (innerCorners * p.innerCorner) + (internalAdditional * p.internalAdditional) + (finishBlocks * p.finish) + (doorBlocks * p.door) + (doorBlock12 * p.door12) + (windowBlocks * p.window) + (windowBlock12 * p.window12) + (armopoyasBlocks * p.armopoyas) + (rowBlocks * p.row);
         const packagingPrice = packaging * p.packaging;
         const constructionCost = getValue('Tip_doma') * getValue('PSDF_dlina') * getValue('PSDF_shirina');
 
-        // ДОСТАВКА
         const isDelivery = document.getElementById('Delivery_need')?.value === 'yes';
         const distance = getValue('Delivery_km');
         const trucksCount = Math.ceil(packaging / 20); // 1 фура везет до 20 паллет
@@ -187,9 +208,9 @@
             document.getElementById('deliveryTotalRow').style.display = isDelivery ? 'flex' : 'none';
         }
 
-        const finalTotal = blocksCost + packagingPrice + constructionCost + deliveryCost;
+        const finalTotal = blocksCost + packagingPrice + totalMaterialsCost + constructionCost + deliveryCost;
 
-        // ВЫВОД НА ЭКРАН
+        // ВЫВОД НА ЭКРАН (БЛОКИ И ПЛОЩАДИ)
         setView('PSDF_ploshad_view', areas.mainWallArea, 2);
         setView('PFD_ploshad_view', areas.gableArea, 2);
         setView('PO_ploshad_total_view', areas.windowArea, 2);
@@ -209,34 +230,48 @@
         setView('Blok_doborniy_armopoyasnoy_view', armopoyasBlocks, 0);
         setView('Blok_ryadniy_view', rowBlocks, 0);
 
+        // ВЫВОД НА ЭКРАН (МАТЕРИАЛЫ)
+        setView('mat_mix_view', mixCount, 0);
+        setView('mat_foam_view', foamCount, 0);
+        setView('mat_mesh_view', meshCount, 0);
+        setView('mat_hydro_view', hydroCount, 0);
+        setView('mat_cleaner_view', cleanerCount, 0);
+        setView('mat_gun_view', gunCount, 0);
+
+        // ВЫВОД НА ЭКРАН (ДЕНЬГИ)
         setMoneyView('blocksCostView', blocksCost);
         setView('palletsCountView', packaging, 0);
         setMoneyView('packagingCostView', packagingPrice);
+
+        setMoneyView('materialsCostView', totalMaterialsCost);
+        setMoneyView('finalConsumablesCostView', totalMaterialsCost);
+
         setView('trucksCountView', trucksCount, 0);
         setMoneyView('deliveryCostView', deliveryCost);
         setMoneyView('finalDeliveryCostView', deliveryCost);
         setMoneyView('constructionCostView', constructionCost);
         setMoneyView('ITOGO_view', finalTotal);
 
-        // СКРЫТЫЕ ПОЛЯ ДЛЯ ПОЧТЫ
-        setValue('Itogo_kolichestvo_blokov', totalBlocks);
-        setValue('Obiem_blokov', blockVolume);
-        setValue('Blok_uglovoy_naruzhniy', outerCorners);
-        setValue('Blok_uglovoy_vnut', innerCorners);
-        setValue('Blok_doborniy_vnut', internalAdditional);
-        setValue('Blok_finishniy', finishBlocks);
-        setValue('Blok_dvernogo_proema', doorBlocks);
-        setValue('Blok_dvernogo_proema_12', doorBlock12);
-        setValue('Blok_okonniy_chetvert', windowBlocks);
-        setValue('Blok_okonniy_chetvert_12', windowBlock12);
-        setValue('Blok_doborniy_armopoyasnoy', armopoyasBlocks);
-        setValue('Blok_ryadniy', rowBlocks);
-        setValue('Poddoni_i_upakovka', packaging);
-        setValue('Dostavka_fura', trucksCount);
-        setValue('Itogo_stoimost_materialov', blocksCost + packagingPrice);
-        setValue('ITOGO', finalTotal);
+        // СКРЫТЫЕ ПОЛЯ ДЛЯ ПОЧТЫ (FORMSPREE)
+        setValue('Площадь_стен_м2', areas.totalWallArea.toFixed(2));
+        setValue('Итого_Блоков_шт', totalBlocks);
+        setValue('Объем_Блоков_м3', blockVolume.toFixed(2));
+        setValue('Количество_Поддонов', packaging);
+
+        // Скрытые поля материалов (убедитесь, что они есть в HTML)
+        setValue('Материалы_Смесь_М200_меш', mixCount);
+        setValue('Материалы_Пена_шт', foamCount);
+        setValue('Материалы_Сетка_мп', meshCount);
+        setValue('Материалы_Гидроизол_рул', hydroCount);
+
+        // Итоговые поля
+        setValue('Количество_Фур', trucksCount);
+        setValue('Итого_Стоимость_Блоков', blocksCost + packagingPrice);
+        setValue('Итого_Стройматериалы_руб', totalMaterialsCost);
+        setValue('ИТОГО_К_ОПЛАТЕ_РУБ', finalTotal);
     }
 
+    // СЛУШАТЕЛИ СОБЫТИЙ
     form.addEventListener('input', e => { if (e.target.matches('input, select')) calculate(); });
     form.addEventListener('change', e => { if (e.target.matches('input, select')) calculate(); });
 
@@ -249,19 +284,17 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
 
-        // Берем URL прямо из атрибута action вашей формы
         fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
-            headers: {
-                'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
         })
         .then(response => {
             if (response.ok) {
                 statusDiv.style.color = '#6fba81';
                 statusDiv.textContent = 'Спасибо! Ваш расчёт успешно отправлен.';
-                form.reset(); // Очищаем форму после успеха
+                form.reset();
+                calculate(); // Пересчитываем после сброса
             } else {
                 response.json().then(data => {
                     if (Object.hasOwn(data, 'errors')) {
@@ -282,23 +315,6 @@
             submitBtn.textContent = 'Получить расчёт';
         });
     });
-    //
-    // form.addEventListener('submit', function(e) {
-    //     e.preventDefault();
-    //     const submitBtn = form.querySelector('button[type="submit"]');
-    //     const statusDiv = document.getElementById('calculatorMessage');
-    //
-    //     submitBtn.disabled = true;
-    //     submitBtn.textContent = 'Отправка...';
-    //
-    //     fetch('mail.php', { method: 'POST', body: new FormData(form) })
-    //     .then(res => res.text().then(text => {
-    //         if (res.ok) { statusDiv.style.color = '#6fba81'; statusDiv.textContent = 'Спасибо! Ваша заявка отправлена.'; }
-    //         else { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка: ' + text; }
-    //     }))
-    //     .catch(() => { statusDiv.style.color = '#ff8b94'; statusDiv.textContent = 'Ошибка сети. Попробуйте позже.'; })
-    //     .finally(() => { submitBtn.disabled = false; submitBtn.textContent = 'Получить расчёт'; });
-    // });
 
     document.getElementById('PO_col')?.addEventListener('change', () => { updateVisibility('PO_col', '.window-type'); calculate(); });
     document.getElementById('PDD')?.addEventListener('change', () => { updateVisibility('PDD', '.door-type'); calculate(); });
@@ -309,6 +325,7 @@
         calculate();
     });
 
+    // Инициализация при загрузке
     updateVisibility('PO_col', '.window-type');
     updateVisibility('PDD', '.door-type');
     calculate();

@@ -32,6 +32,7 @@
             <a href="index.html" class="is-active">Главная</a>
             <a href="#catalog">Каталог</a>
             <a href="#about">О производстве</a>
+            <a href="all-projects.html">Наши проекты</a>
             <a href="calculator.html">Калькулятор блоков</a>
             <a href="#contacts">Контакты</a>
         </nav>
@@ -187,7 +188,6 @@
         </div>
     </section>
 
-
     <!-- CATALOG -->
     <section class="catalog" id="catalog">
         <div class="container catalog__grid">
@@ -195,69 +195,82 @@
             <!-- Left Side: Title & Info -->
             <div class="catalog__intro reveal">
                 <span class="eyebrow">КАТАЛОГ ПРОДУКЦИИ</span>
-                <h2>Теплоблоки<br>для вашего проекта</h2>
-                <p>Мы предлагаем разные виды теплоблоков, чтобы вы могли выбрать оптимальное решение для своего
-                    строительства.</p>
-                <a class="btn btn--outline" href="catalog.html">Весь каталог <b>→</b></a>
+                <h2>Решения<br>для вашего проекта</h2>
+                <p>Выберите подходящий тип блоков и фасадов. Мы предлагаем 4 основные категории — от базовых теплоблоков
+                    до премиальных керамогранитных решений.</p>
+                <a class="btn btn--outline" href="catalog.html">Все цены и фасады <b>→</b></a>
             </div>
 
-            <!-- Right Side: Product Cards -->
+            <!-- Right Side: Product Category Cards -->
             <div class="products" id="products">
 
-                <!-- Item 1 -->
+                <!-- Item 1: Теплоблок -->
                 <article class="product reveal">
                     <div class="product__visual">
-                        <img src="assets/images/1.webp"
-                             alt="Теплоблок" loading="lazy">
+                        <img src="assets/images/теплоблок.webp" alt="Теплоблок с пенополистиролом" loading="lazy">
                     </div>
                     <div class="product__content">
                         <h3>Теплоблок</h3>
-                        <p>190*190*400<br>Цветной — <strong>340 ₽</strong></p>
-                        <a href="#contacts" class="product__link">Подробнее <b>→</b></a>
+                        <!-- Ссылка теперь ведет на #teploblok -->
+                        <a href="catalog.html#teploblok" class="product__link">
+                            <p>Трехслойный блок с эффективным сердечником из пенополистирола (пенопласта). Гарантирует
+                                максимальный уровень теплосбережения и значительную экономию на отоплении.</p>
+                            <b>→</b>
+                        </a>
                     </div>
                 </article>
 
-                <!-- Item 2 -->
+                <!-- Item 2: Иноблок -->
                 <article class="product reveal reveal--1">
                     <div class="product__visual">
-                        <img src="assets/images/2.webp"
-                             alt="Экоблок" loading="lazy">
+                        <img src="assets/images/2.webp" alt="Иноблок с керамзитом" loading="lazy">
+                    </div>
+                    <div class="product__content">
+                        <h3>Иноблок</h3>
+                        <!-- Ссылка теперь ведет на #inoblok -->
+                        <a href="catalog.html#inoblok" class="product__link">
+                            <p>Инновационный негорючий блок, в котором вместо пенопласта используется экологичный
+                                керамзит. Стены отлично «дышат» и обладают абсолютной пожаробезопасностью.</p>
+                            <b>→</b>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Item 3: Экоблок -->
+                <article class="product reveal reveal--2">
+                    <div class="product__visual">
+                        <img src="assets/images/image.png" alt="Экоблок с мраморной крошкой" loading="lazy">
                     </div>
                     <div class="product__content">
                         <h3>Экоблок</h3>
-                        <p>195*190*400<br>Цветной — <strong>200 ₽</strong></p>
-                        <a href="#contacts" class="product__link">Подробнее <b>→</b></a>
+                        <!-- Ссылка теперь ведет на #ecoblok -->
+                        <a href="catalog.html#ecoblok" class="product__link">
+                            <p>Вершина нашей линейки. Полностью экологичная база из керамзита в сочетании с премиальным
+                                фасадом из натуральной мраморной крошки.</p>
+                            <b>→</b>
+                        </a>
                     </div>
                 </article>
 
-                <!-- Item 3 -->
-                <article class="product reveal reveal--2">
-                    <div class="product__visual">
-                        <img src="assets/images/3.webp"
-                             alt=" Экоблок с гранитным фасадом" loading="lazy">
-                    </div>
-                    <div class="product__content">
-                        <h3>Экоблок с гранитным фасадом</h3>
-                        <p>195*190*400<br>Цветной — <strong>400 ₽</strong></p>
-                        <a href="#contacts" class="product__link">Подробнее <b>→</b></a>
-                    </div>
-                </article>
-
-                <!-- Item 4 -->
+                <!-- Item 4: Стройматериалы -->
                 <article class="product reveal reveal--3">
                     <div class="product__visual">
-                        <img src="assets/images/4.webp"
-                             alt="Блок армо-поясной" loading="lazy">
+                        <img src="assets/images/4.webp" alt="Строительные материалы" loading="lazy">
                     </div>
                     <div class="product__content">
-                        <h3>Блок армо-поясной</h3>
-                        <p>190*190*400<br>Цветной — <strong>200 ₽</strong></p>
-                        <a href="#contacts" class="product__link">Подробнее <b>→</b></a>
+                        <h3>Строительные материалы</h3>
+                        <!-- Ссылка теперь ведет на спецификации или можно сделать #specs -->
+                        <a href="catalog.html#specs" class="product__link">
+                            <p>Всё необходимое для правильного возведения стен: качественная кладочная смесь М-200,
+                                базальтовая сетка для армирования и монтажная пена.</p>
+                            <b>→</b>
+                        </a>
                     </div>
                 </article>
 
             </div>
         </div>
+
     </section>
 
     <!-- ABOUT / FACTORY -->

@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="ЭКОБЛОК — Реализованные проекты, дома и коттеджи из теплоблоков.">
+    <meta name="description"
+          content="ЭКОБЛОК — производство и поставка теплоблоков. Собственное производство, контроль качества, доставка и консультация по строительству.">
     <meta name="theme-color" content="#17382d">
-    <title>Реализованные проекты | KZTB</title>
+    <title>ЭКОБЛОК — современное производство теплоблоков</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap"
@@ -15,13 +16,12 @@
 
 </head>
 <body>
-
 <a class="skip-link" href="#main">К содержанию</a>
 <header class="header" id="top">
     <div class="container header__inner">
         <!-- Logo Area -->
-        <a class="brand" href="index.html" aria-label="KZTB">
-            <img src="assets/images/logo.png" alt="KZTB Логотип" class="brand__logo">
+        <a class="brand" href="#top" aria-label="KZTB">
+            <img src="assets/images/logo.png" alt="KZTB Логотип" class="brand__logo" loading="lazy">
 
             <div class="brand__text">
                 <strong>KZTB</strong>
@@ -36,6 +36,7 @@
             <a href="index.html#about">О производстве</a>
             <a href="calculator.html">Калькулятор блоков</a>
             <a href="index.html#contacts">Контакты</a>
+
         </nav>
 
         <!-- Phone and Button -->
@@ -55,146 +56,796 @@
         </div>
 
         <!-- Mobile Burger Menu Button -->
-        <button class="burger" type="button" aria-label="Меню" aria-expanded="false">
-            <span></span><span></span><span></span>
+        <button
+                class="burger"
+                type="button"
+                aria-label="Меню"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
     </div>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="index.html#about">О производстве</a>
+        <a href="calculator.html">Калькулятор блоков</a>
+        <a href="index.html#contacts">Контакты</a>
+
+        <a href="tel:+78001234567" class="mobile-menu__phone">
+            +7 (800) 123-45-67
+        </a>
+
+        <a href="index.html#contacts" class="btn btn--dark mobile-menu__button">
+            Заказать звонок
+        </a>
+    </div>
     <div class="custom-shape-divider-bottom">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                  opacity=".25" class="shape-fill-cream"></path>
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+             preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,700.36-5.37,136.33-33.31,206.8-37.5C438.64,332.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                  class="shape-fill-cream"></path>
+
         </svg>
     </div>
 </header>
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="index.html#about">О производстве</a>
+    <a href="calculator.html">Калькулятор блоков</a>
+    <a href="index.html#contacts">Контакты</a>
+    <a href="tel:+78001234567" class="mobile-menu__phone">+7 (800) 123-45-67</a>
+    <a href="index.html#contacts" class="btn btn--dark mobile-menu__button">Заказать звонок</a>
+</div>
 
 <main class="projects-page" id="main">
     <div class="container">
 
         <div class="projects-page__intro reveal">
-            <span class="eyebrow">ПОРТФОЛИО</span>
-            <h1>Реализованные проекты</h1>
-            <p>Мы гордимся каждым построенным домом. Здесь представлены частные дома, коттеджи, таунхаусы и коммерческие
-                объекты, возведенные из теплоблоков KZTB с готовым декоративным фасадом.</p>
+            <span class="eyebrow">ФОТОАЛЬБОМ</span>
+            <h1>Наши проекты</h1>
+            <p>Фотографии готовых частных домов, гаражей и коммерческих объектов, возведенных из теплоблоков KZTB.
+                Галерея отсортирована по годам постройки.</p>
         </div>
 
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <article class="project reveal">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85"
-                         alt="Частный дом">
-                </div>
-                <div class="project__content">
-                    <b>Частный дом, 180 м²</b>
-                    <span>Ленинградская область</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2022 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2022</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2022/20220213_135431.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220513_125642.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220513_125707.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220607_133249.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220622_143209.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220622_143243.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220622_143339.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220622_143345.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220703_175230.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220705_091327.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220705_091333.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220705_091346.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220705_091407.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220722_135809.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220728_145305.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_141935.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_141959.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_142025.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_142207.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_142220.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_142228.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220808_142231.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_071439.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_071449.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_071453.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_071529.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_071542.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_080500.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_080631.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2022/20220812_080644.webp" alt="Проект 2022"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 2 -->
-            <article class="project reveal reveal--1">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
-                         alt="Коттедж">
-                </div>
-                <div class="project__content">
-                    <b>Коттедж, 240 м²</b>
-                    <span>Санкт-Петербург</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2021 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2021</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2021/20210210_122608.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210210_122637.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210210_122721.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210210_122730.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210210_122734.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210527_181556.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142531.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142536.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142555.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142559.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142619.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142643.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142715.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142717.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142723.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_142743.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_143129.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_143136.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20210825_143145.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211013_110938.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211013_111026.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_135549.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_135718.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_135808.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_135812.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_135832.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_145235.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211202_145248.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211213_120935.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211213_121007.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/20211213_121118.webp" alt="Проект 2021"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0000.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0011.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0012.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0013.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0015.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201002-WA0016.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201008-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201009-WA0000.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201009-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201009-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201010-WA0010.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201011-WA0007.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201012-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201012-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201012-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201012-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201012-WA0005.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201012-WA0006.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201013-WA0005.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201013-WA0006.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201013-WA0007.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201013-WA0008.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201016-WA0010.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201016-WA0011.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201016-WA0012.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201016-WA0013.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201016-WA0014.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201021-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201021-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201021-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201021-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201023-WA0009.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201023-WA0010.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201023-WA0011.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201025-WA0024.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0006.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0013.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0014.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0017.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0018.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0019.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0021.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0022.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0023.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0024.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0025.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201027-WA0026.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201028-WA0007.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201028-WA0008.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201028-WA0009.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201028-WA0010.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201028-WA0011.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0012.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0013.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0015.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0016.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0020.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201029-WA0021.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201031-WA0006.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201101-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201101-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201101-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201102-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201114-WA0000.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201114-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20201218-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210106-WA0000.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210106-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210123-WA0000.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210123-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210123-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210603-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210603-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210614-WA0015.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210615-WA0001.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210615-WA0002.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210718-WA0004.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210914-WA0005.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210915-WA0003.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2021/IMG-20210915-WA0008.webp"
+                                             alt="Проект 2021" loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 3 -->
-            <article class="project reveal reveal--2">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85"
-                         alt="Коммерческий объект">
-                </div>
-                <div class="project__content">
-                    <b>Коммерческий объект, 320 м²</b>
-                    <span>Тверская область</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2020 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2020</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_121315.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_121325.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_121721.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_121724.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_121734.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_122039.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_130026.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/20201108_130050.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2020/IMG_2554.webp" alt="Проект 2020"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 4 -->
-            <article class="project reveal">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=85"
-                         alt="Загородная усадьба">
-                </div>
-                <div class="project__content">
-                    <b>Загородная усадьба, 410 м²</b>
-                    <span>Московская область</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2019 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2019</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2019/1637_b.webp" alt="Проект 2019"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 5 -->
-            <article class="project reveal reveal--1">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?auto=format&fit=crop&w=1000&q=85"
-                         alt="Таунхаус">
-                </div>
-                <div class="project__content">
-                    <b>Таунхаус, 150 м²</b>
-                    <span>Республика Карелия</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2018 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2018</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2018/гараж%202.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/гараж%203.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%201.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%202.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%203.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%204.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%205.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%206.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%207.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2018/дом%208.webp" alt="Проект 2018"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 6 -->
-            <article class="project reveal reveal--2">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1000&q=85"
-                         alt="Гостевой дом">
-                </div>
-                <div class="project__content">
-                    <b>Гостевой дом, 120 м²</b>
-                    <span>Новгородская область</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2016 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2016</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2016/IMG_0196.webp" alt="Проект 2016"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2016/IMG_0197.webp" alt="Проект 2016"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2016/IMG_0198.webp" alt="Проект 2016"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2016/IMG_0199.webp" alt="Проект 2016"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2016/IMG_0211.webp" alt="Проект 2016"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2016/IMG_0212.webp" alt="Проект 2016"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 7 -->
-            <article class="project reveal">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1576941089067-2de3ce646ee8?auto=format&fit=crop&w=1000&q=85"
-                         alt="Классический коттедж">
+        <!-- СЕКЦИЯ 2015 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2015</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2015/1.webp" alt="Проект 2015" loading="lazy">
                 </div>
-                <div class="project__content">
-                    <b>Классический дом, 200 м²</b>
-                    <span>Псков</span>
-                </div>
-            </article>
+                <div class="photo-item"><img src="assets/images/projects/2015/1593_b.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1594_b.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1599_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1600_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1601_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1602_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1603_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1604_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1613_b.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1613_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1614_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/1629_s.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_0071.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_0072.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_20150204_155315.webp"
+                                             alt="Проект 2015" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_20150204_155348%20(2).webp"
+                                             alt="Проект 2015" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_20150204_155348.webp"
+                                             alt="Проект 2015" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_20150517_182024%20(2).webp"
+                                             alt="Проект 2015" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/IMG_20150517_182024.webp"
+                                             alt="Проект 2015" loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/P1030518.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2015/P1030520.webp" alt="Проект 2015"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 8 -->
-            <article class="project reveal reveal--1">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85"
-                         alt="Вилла">
-                </div>
-                <div class="project__content">
-                    <b>Современная вилла, 350 м²</b>
-                    <span>Краснодар</span>
-                </div>
-            </article>
+        <!-- СЕКЦИЯ 2013 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2013</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-602.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-603.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-604.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-605.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-606.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-607.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/2013-09-23-608.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030228.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030229.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030230.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030231.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030232.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030233.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/P1030234.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/Фото0138.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/Фото0139.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2013/Фото0140.webp" alt="Проект 2013"
+                                             loading="lazy"></div>
+            </div>
+        </section>
 
-            <!-- Project 9 -->
-            <article class="project reveal reveal--2">
-                <div class="project__visual">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=85"
-                         alt="Дуплекс">
-                </div>
-                <div class="project__content">
-                    <b>Дуплекс на две семьи, 280 м²</b>
-                    <span>Мурманск</span>
-                </div>
-            </article>
-        </div>
+        <!-- СЕКЦИЯ 2012 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2012</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1674.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1675.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1679.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1689.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1691.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1693.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1694.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1695.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1696.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1697.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1698.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1701.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1704.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1705.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1706.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1707.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1710.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1711.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1712.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1713.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1714.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1715.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1716.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1718.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1719.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1720.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1721.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1723.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1724.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1725.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1726.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1727.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1728.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1729.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1730.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1732.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1733.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1734.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1735.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1737.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2012/DSCN1833.webp" alt="Проект 2012"
+                                             loading="lazy"></div>
+            </div>
+        </section>
+
+        <!-- СЕКЦИЯ 2011 -->
+        <section class="year-block reveal">
+            <h2 class="year-title">2011</h2>
+            <div class="photo-grid">
+                <div class="photo-item"><img src="assets/images/projects/2011/1602_b.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0228.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0229.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0230.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0231.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0232.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0233.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0234.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0235.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0237.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0238.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0239.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0253.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0254.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN0255.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1673.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1674.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1675.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1677.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1678.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1679.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1680.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1689.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1690.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1691.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1692.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1693.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1694.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1695.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1696.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1697.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1698.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1699.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1700.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1701.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1702.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1703.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1704.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1705.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1706.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1707.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1708.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1709.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1710.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1712.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1713.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1717.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1720.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1724.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1725.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1726.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1727.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1728.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1729.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1730.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1731.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1732.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1733.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1734.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1735.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1736.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1737.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1738.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1739.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1740.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1741.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1742.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1743.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1831.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1832.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN1833.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN2065.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN2067.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+                <div class="photo-item"><img src="assets/images/projects/2011/DSCN2072.webp" alt="Проект 2011"
+                                             loading="lazy"></div>
+            </div>
+        </section>
+
     </div>
 </main>
-
-
-<!-- FOOTER -->
 <footer class="footer">
     <div class="container footer__top">
         <a class="brand brand--light" href="index.html">
-            <img src="assets/images/logo.png" alt="KZTB Логотип" class="brand__logo">
+            <img src="assets/images/logo.png" alt="KZTB Логотип" class="brand__logo" loading="lazy">
             <div class="brand__text">
                 <strong>KZTB</strong>
                 <span>теплоблоки<br>для строительства</span>
@@ -210,14 +861,14 @@
         </nav>
         <div class="socials">
             <a href="#" target="_blank" aria-label="VK"><img
-                            src="https://static.tildacdn.com/tild3461-3963-4835-b436-346162383836/free-icon-vk-5968835.png"
-                            alt="VK"></a>
-                    <a href="https://wa.me/79030199922" target="_blank" aria-label="WhatsApp"><img
-                            src="https://static.tildacdn.com/tild3637-3231-4237-a233-633666666266/whatsapp_1.png"
-                            alt="WhatsApp"></a>
-                    <a href="#" target="_blank" aria-label="Telegram"><img
-                            src="https://static.tildacdn.com/tild3732-3461-4065-a134-313565396537/free-icon-telegram-2.png"
-                            alt="Telegram"></a>
+                    src="https://static.tildacdn.com/tild3461-3963-4835-b436-346162383836/free-icon-vk-5968835.png"
+                    alt="VK"></a>
+            <a href="https://wa.me/79030199922" target="_blank" aria-label="WhatsApp"><img
+                    src="https://static.tildacdn.com/tild3637-3231-4237-a233-633666666266/whatsapp_1.png"
+                    alt="WhatsApp"></a>
+            <a href="#" target="_blank" aria-label="Telegram"><img
+                    src="https://static.tildacdn.com/tild3732-3461-4065-a134-313565396537/free-icon-telegram-2.png"
+                    alt="Telegram"></a>
         </div>
     </div>
     <div class="container footer__bottom">
@@ -226,6 +877,13 @@
     </div>
 </footer>
 
+<button class="to-top" id="toTop" aria-label="Наверх">↑</button>
 <script src="js/main.js"></script>
+<script src="js/projects.js"></script>
+<!-- LIGHTBOX MODAL -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Закрыть">&times;</button>
+    <img id="lightboxImg" src="" alt="Увеличенное фото">
+</div>
 </body>
 </html>
