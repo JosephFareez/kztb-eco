@@ -282,7 +282,6 @@
             submitBtn.textContent = 'Получить расчёт';
         });
     });
-    // AJAX ОТПРАВКА НА MAIL.PHP
     //
     // form.addEventListener('submit', function(e) {
     //     e.preventDefault();
