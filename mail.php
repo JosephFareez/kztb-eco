@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ВАШ E-MAIL ДЛЯ ЗАЯВОК
-    $to = "joy.life86@mail.ru";
+    $to = "kztbt@mail.ru";
 
     // Получаем и очищаем базовые данные из формы
     $name = isset($_POST['name']) ? strip_tags(trim($_POST['name'])) : '';
