@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /js/
+Disallow: /*?*
+Disallow: /privacy.html
+
+# Указываем поисковикам главное зеркало и карту сайта
+Host: https://kztb.ru
+Sitemap: https://kztb.ru/sitemap.xml
