@@ -4,7 +4,8 @@
     const form = document.getElementById('ecoCalculator');
     if (!form) return;
 
-    const $ = (selector, root = form) => root.querySelector(selector);     const $$ = (selector, root = form) => [...root.querySelectorAll(selector)];
+    const $ = (selector, root = form) => root.querySelector(selector);
+    const $$ = (selector, root = form) => [...root.querySelectorAll(selector)];
 
     function number(value) {
         if (value === null || value === undefined) return 0;
@@ -59,6 +60,7 @@
             container.appendChild(w);
         }
     }
+
     createWindows();
 
     function createDoors() {
@@ -76,12 +78,16 @@
             container.appendChild(d);
         }
     }
+
     createDoors();
 
     function updateVisibility(countId, typeClass) {
         const count = number(document.getElementById(countId)?.value);
-        $$(typeClass).forEach((el, index) => {             const visible = index < count;             el.style.display = visible ? '' : 'none';             if (!visible) $$
-('input', el).forEach(input => input.value = '0');
+        $$(typeClass).forEach((el, index) => {
+            const visible = index < count;
+            el.style.display = visible ? '' : 'none';
+            if (!visible) $$
+            ('input', el).forEach(input => input.value = '0');
         });
     }
 
@@ -94,14 +100,38 @@
             '300': {
                 volumeDivisor: 43,
                 palletCapacity: 48,
-                prices: { outerCorner: 400, innerCorner: 500, internalAdditional: 120, finish: 320, door: 320, door12: 200, window: 320, window12: 200, armopoyas: 200, row: 298, packaging: 400 },
-                materials: { mix: 3.9, foam: 1.6, mesh: 6.7 } // Коэффициенты для 300мм
+                prices: {
+                    outerCorner: 400,
+                    innerCorner: 500,
+                    internalAdditional: 120,
+                    finish: 320,
+                    door: 320,
+                    door12: 200,
+                    window: 320,
+                    window12: 200,
+                    armopoyas: 200,
+                    row: 298,
+                    packaging: 400
+                },
+                materials: {mix: 3.9, foam: 1.6, mesh: 6.7} // Коэффициенты для 300мм
             },
             '400': {
                 volumeDivisor: 33,
                 palletCapacity: 36,
-                prices: { outerCorner: 400, innerCorner: 420, internalAdditional: 120, finish: 345, door: 335, door12: 240, window: 335, window12: 220, armopoyas: 260, row: 325, packaging: 400 },
-                materials: { mix: 3.9, foam: 1.93, mesh: 5.0 } // Коэффициенты для 400мм
+                prices: {
+                    outerCorner: 400,
+                    innerCorner: 420,
+                    internalAdditional: 120,
+                    finish: 345,
+                    door: 335,
+                    door12: 240,
+                    window: 335,
+                    window12: 220,
+                    armopoyas: 260,
+                    row: 325,
+                    packaging: 400
+                },
+                materials: {mix: 3.9, foam: 1.93, mesh: 5.0} // Коэффициенты для 400мм
             }
         };
         return config[type];
@@ -118,10 +148,11 @@
         const mainWallArea = perimeter * height;
 
         const gableArea = (getValue('PFD_dlina') * getValue('PFD_shirina')) +
-                          (getValue('PFD_dlina_dop1') * getValue('PFD_shirina_dop1') * 0.5) +
-                          (getValue('PFD_dlina_dop2') * getValue('PFD_shirina_dop2') * 0.5);
+            (getValue('PFD_dlina_dop1') * getValue('PFD_shirina_dop1') * 0.5) +
+            (getValue('PFD_dlina_dop2') * getValue('PFD_shirina_dop2') * 0.5);
 
-        let windowArea = 0; let poCH = 0;
+        let windowArea = 0;
+        let poCH = 0;
         for (let i = 1; i <= 9; i++) {
             const wArea = getValue(`PO_shirina${i}`) * getValue(`PO_visota${i}`) * getValue(`PO_col${i}`);
             windowArea += wArea;
@@ -129,13 +160,23 @@
             poCH += getValue(`PO_shirina${i}`) * getValue(`PO_col${i}`);
         }
 
-        let doorArea = 0; let pddCH = 0;
+        let doorArea = 0;
+        let pddCH = 0;
         for (let i = 1; i <= 4; i++) {
             doorArea += getValue(`PDD_shirina${i}`) * getValue(`PDD_visota${i}`) * getValue(`PDD_col${i}`);
             pddCH += getValue(`PDD_shirina${i}`) * getValue(`PDD_col${i}`);
         }
 
-        return { perimeter, mainWallArea, gableArea, windowArea, doorArea, poCH, pddCH, totalWallArea: mainWallArea + gableArea - windowArea - doorArea };
+        return {
+            perimeter,
+            mainWallArea,
+            gableArea,
+            windowArea,
+            doorArea,
+            poCH,
+            pddCH,
+            totalWallArea: mainWallArea + gableArea - windowArea - doorArea
+        };
     }
 
     /* =========================================================
@@ -157,12 +198,18 @@
         const finishBlocks = 0;
 
         let doorBlocksRaw = 0, openingCounts = 0;
-        for (let i = 1; i <= 4; i++) { doorBlocksRaw += getValue(`PDD_visota${i}`) * getValue(`PDD_col${i}`); openingCounts += getValue(`PDD_col${i}`); }
+        for (let i = 1; i <= 4; i++) {
+            doorBlocksRaw += getValue(`PDD_visota${i}`) * getValue(`PDD_col${i}`);
+            openingCounts += getValue(`PDD_col${i}`);
+        }
         const doorBlocks = Math.ceil(doorBlocksRaw / 0.2);
         const doorBlock12 = doorBlocks;
 
         let windowBlocksRaw = 0;
-        for (let i = 1; i <= 9; i++) { windowBlocksRaw += getValue(`PO_visota${i}`) * getValue(`PO_col${i}`); openingCounts += getValue(`PO_col${i}`); }
+        for (let i = 1; i <= 9; i++) {
+            windowBlocksRaw += getValue(`PO_visota${i}`) * getValue(`PO_col${i}`);
+            openingCounts += getValue(`PO_col${i}`);
+        }
         const windowBlocks = Math.ceil(windowBlocksRaw / 0.2);
         const windowBlock12 = windowBlocks;
 
@@ -272,11 +319,15 @@
     }
 
     // СЛУШАТЕЛИ СОБЫТИЙ
-    form.addEventListener('input', e => { if (e.target.matches('input, select')) calculate(); });
-    form.addEventListener('change', e => { if (e.target.matches('input, select')) calculate(); });
+    form.addEventListener('input', e => {
+        if (e.target.matches('input, select')) calculate();
+    });
+    form.addEventListener('change', e => {
+        if (e.target.matches('input, select')) calculate();
+    });
 
     // AJAX ОТПРАВКА ЧЕРЕЗ FORMSPREE
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         const submitBtn = form.querySelector('button[type="submit"]');
         const statusDiv = document.getElementById('calculatorMessage');
@@ -287,41 +338,51 @@
         fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
+            headers: {'Accept': 'application/json'}
         })
-        .then(response => {
-            if (response.ok) {
-                statusDiv.style.color = '#6fba81';
-                statusDiv.textContent = 'Спасибо! Ваш расчёт успешно отправлен.';
-                form.reset();
-                calculate(); // Пересчитываем после сброса
-            } else {
-                response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                        statusDiv.textContent = data["errors"].map(error => error["message"]).join(", ");
-                    } else {
-                        statusDiv.textContent = 'Произошла ошибка при отправке.';
-                    }
-                });
+            .then(response => {
+                if (response.ok) {
+                    statusDiv.style.color = '#6fba81';
+                    statusDiv.textContent = 'Спасибо! Ваш расчёт успешно отправлен.';
+                    form.reset();
+                    calculate(); // Пересчитываем после сброса
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            statusDiv.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            statusDiv.textContent = 'Произошла ошибка при отправке.';
+                        }
+                    });
+                    statusDiv.style.color = '#ff8b94';
+                }
+            })
+            .catch(() => {
                 statusDiv.style.color = '#ff8b94';
-            }
-        })
-        .catch(() => {
-            statusDiv.style.color = '#ff8b94';
-            statusDiv.textContent = 'Ошибка сети. Попробуйте позже.';
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Получить расчёт';
-        });
+                statusDiv.textContent = 'Ошибка сети. Попробуйте позже.';
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Получить расчёт';
+            });
     });
 
-    document.getElementById('PO_col')?.addEventListener('change', () => { updateVisibility('PO_col', '.window-type'); calculate(); });
-    document.getElementById('PDD')?.addEventListener('change', () => { updateVisibility('PDD', '.door-type'); calculate(); });
+    document.getElementById('PO_col')?.addEventListener('change', () => {
+        updateVisibility('PO_col', '.window-type');
+        calculate();
+    });
+    document.getElementById('PDD')?.addEventListener('change', () => {
+        updateVisibility('PDD', '.door-type');
+        calculate();
+    });
     document.getElementById('PFD_col_frontonov')?.addEventListener('change', () => {
         const count = number(document.getElementById('PFD_col_frontonov').value);
-        if (document.getElementById('additionalGable1')) { document.getElementById('additionalGable1').style.display = count >= 2 ? '' : 'none'; }
-        if (document.getElementById('additionalGable2')) { document.getElementById('additionalGable2').style.display = count >= 3 ? '' : 'none'; }
+        if (document.getElementById('additionalGable1')) {
+            document.getElementById('additionalGable1').style.display = count >= 2 ? '' : 'none';
+        }
+        if (document.getElementById('additionalGable2')) {
+            document.getElementById('additionalGable2').style.display = count >= 3 ? '' : 'none';
+        }
         calculate();
     });
 

@@ -319,8 +319,7 @@
                    Длина × Высота ÷ Площадь блока
                    ----------------------------------------- */
 
-                const calculated =
-                    length * height / area;
+                const calculated = length * height / area;
 
 
                 /* -----------------------------------------
@@ -582,5 +581,55 @@
         }
     );
 
+
+    /* =========================================
+       LIGHTBOX (УВЕЛИЧЕНИЕ ФОТО)
+       ========================================= */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.querySelector('.lightbox__close');
+
+    if (lightbox && lightboxImg) {
+
+        // Открытие фото при клике на любой элемент с классом photo-item img
+        document.addEventListener('click', (e) => {
+            const item = e.target.closest('.photo-item img');
+            if (item) {
+                lightboxImg.src = item.src;
+                lightbox.classList.add('is-open');
+                document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+            }
+        });
+
+        // Функция закрытия лайтбокса
+        function closeLightbox() {
+            lightbox.classList.remove('is-open');
+            document.body.style.overflow = ''; // Возвращаем прокрутку
+
+            // Очищаем src после завершения анимации затухания, чтобы при следующем открытии не моргала старая картинка
+            setTimeout(() => {
+                lightboxImg.src = '';
+            }, 300);
+        }
+
+        // Закрытие по крестику
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeLightbox);
+        }
+
+        // Закрытие при клике по фону (мимо самой картинки)
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Закрытие по клавише Esc на клавиатуре
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+                closeLightbox();
+            }
+        });
+    }
 
 })();
