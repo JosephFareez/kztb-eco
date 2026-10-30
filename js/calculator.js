@@ -14,7 +14,6 @@
         return Number.isFinite(result) ? result : 0;
     }
 
-    // ИСПРАВЛЕНИЕ: Теперь функция ищет элементы и по ID, и по Name
     function getValue(identifier) {
         const field = document.getElementById(identifier) || form.querySelector(`[name="${identifier}"]`);
         return field ? number(field.value) : 0;
@@ -83,61 +82,113 @@
     createDoors();
 
     function updateVisibility(countId, typeClass) {
-        const count = getValue(countId); // Используем нашу умную функцию
+        const count = getValue(countId);
         $$(typeClass).forEach((el, index) => {
             const visible = index < count;
             el.style.display = visible ? '' : 'none';
             if (!visible) {
-                $$
-                ('input', el).forEach(input => input.value = '0');
+                $$('input', el).forEach(input => input.value = '0');
             }
         });
     }
 
     /* =========================================================
-       ЦЕНЫ И НАСТРОЙКИ (ИЗ EXCEL)
-    ========================================================= */
+         ЦЕНЫ И НАСТРОЙКИ
+      ========================================================= */
     function getBlockConfig() {
-        const type = document.getElementById('Block_type')?.value || '400';
-        const config = {
-            '300': {
-                volumeDivisor: 43,
-                palletCapacity: 48,
-                prices: {
-                    outerCorner: 400,
-                    innerCorner: 500,
-                    internalAdditional: 120,
-                    finish: 320,
-                    door: 320,
-                    door12: 200,
-                    window: 320,
-                    window12: 200,
-                    armopoyas: 200,
-                    row: 298,
-                    packaging: 400
-                },
-                materials: {mix: 3.9, foam: 1.6, mesh: 6.7}
+        const type = document.getElementById('Block_type')?.value || 'TB_400';
+        const facade = document.getElementById('Block_facade')?.value || 'paint';
+
+        // Базовые цены на рядовые блоки
+        const basePrices = {
+            'TB_300': {
+                paint: 250,
+                color: 280,
+                marble: 330,
+                cornerOutOffset: 50,
+                cornerInOffset: 50,
+                doorOffset: 0,
+                windowOffset: 0,
+                armopoyas: 150
             },
-            '400': {
-                volumeDivisor: 33,
-                palletCapacity: 36,
-                prices: {
-                    outerCorner: 400,
-                    innerCorner: 420,
-                    internalAdditional: 120,
-                    finish: 345,
-                    door: 335,
-                    door12: 240,
-                    window: 335,
-                    window12: 220,
-                    armopoyas: 260,
-                    row: 325,
-                    packaging: 400
-                },
-                materials: {mix: 3.9, foam: 1.93, mesh: 5.0}
+            'TB_400': {
+                paint: 310,
+                color: 340,
+                marble: 370,
+                cornerOutOffset: 60,
+                cornerInOffset: 60,
+                doorOffset: 0,
+                windowOffset: 0,
+                armopoyas: 180
+            },
+            'EB_300': {
+                paint: 290,
+                color: 320,
+                marble: 370,
+                cornerOutOffset: 110,
+                cornerInOffset: 110,
+                doorOffset: 50,
+                windowOffset: 50,
+                armopoyas: 150
+            },
+            'EB_400': {
+                paint: 370,
+                color: 400,
+                marble: 450,
+                cornerOutOffset: 130,
+                cornerInOffset: 130,
+                doorOffset: 70,
+                windowOffset: 70,
+                armopoyas: 180
+            },
+            'PB_200': {
+                paint: 135,
+                color: 180,
+                marble: 180,
+                cornerOutOffset: 33,
+                cornerInOffset: 33,
+                doorOffset: 0,
+                windowOffset: 0,
+                armopoyas: 135
+            } // Пескоцементный колотый (1-сторонний)
+        };
+
+        const base = basePrices[type];
+        const rowPrice = base[facade];
+
+        const is300 = type.includes('300');
+        const isPB = type === 'PB_200';
+
+        let volDiv = is300 ? 43 : 33;
+        let palCap = is300 ? 48 : 36;
+        if (isPB) {
+            volDiv = 62.5; // шт в м3
+            palCap = 90;   // шт в поддоне
+        }
+
+        return {
+            volumeDivisor: volDiv,
+            palletCapacity: palCap,
+            prices: {
+                row: rowPrice,
+                row12: Math.round(rowPrice * 0.5) + (isPB ? 10 : 20),
+                outerCorner: rowPrice + base.cornerOutOffset,
+                innerCorner: rowPrice + base.cornerInOffset,
+                internalAdditional: isPB ? rowPrice : 120,
+                finish: rowPrice,
+                door: rowPrice + base.doorOffset,
+                door12: Math.round((rowPrice + base.doorOffset) * 0.7),
+                window: rowPrice + base.windowOffset,
+                window12: Math.round((rowPrice + base.windowOffset) * 0.7),
+                armopoyas: base.armopoyas,
+                packaging: 550
+            },
+            materials: {
+                mix: isPB ? 5.0 : 3.9,
+                foam: isPB ? 0 : (is300 ? 1.6 : 1.93),
+                mesh: isPB ? 0 : (is300 ? 6.7 : 5.0)
             }
         };
-        return config[type];
     }
 
     /* =========================================================
@@ -151,7 +202,6 @@
         const perimeter = (length * 2) + (width * 2);
         const mainWallArea = perimeter * height;
 
-        // Корректный расчет площади фронтонов (площадь треугольника = ширина * высота * 0.5)
         const gablesCount = getValue('PFD_col_frontonov');
         const mainGableArea = (getValue('PFD_dlina') * getValue('PFD_shirina') * 0.5) * gablesCount;
         const dop1Area = getValue('PFD_dlina_dop1') * getValue('PFD_shirina_dop1') * 0.5;
@@ -309,6 +359,14 @@
         setMoneyView('ITOGO_view', finalTotal);
 
         // СКРЫТЫЕ ПОЛЯ ДЛЯ ПОЧТЫ
+        const blockSelect = document.getElementById('Block_type');
+        const facadeSelect = document.getElementById('Block_facade');
+        if (blockSelect && facadeSelect) {
+            const blockNameText = blockSelect.options[blockSelect.selectedIndex].text;
+            const facadeNameText = facadeSelect.options[facadeSelect.selectedIndex].text;
+            setValue('Выбранный_блок', blockNameText + ' (' + facadeNameText + ')');
+        }
+
         setValue('Площадь_стен_м2', areas.totalWallArea.toFixed(2));
         setValue('Итого_Блоков_шт', totalBlocks);
         setValue('Объем_Блоков_м3', blockVolume.toFixed(2));

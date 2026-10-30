@@ -200,7 +200,7 @@ p {
 .btn--dark {
     background: var(--g3);
     color: var(--cream);
-    border: 2px  var(--muted);
+    border: 2px var(--muted);
 }
 
 .btn--dark:hover {
@@ -898,6 +898,12 @@ p {
     border-bottom: 1px solid rgba(25, 55, 45, 0.04);
 }
 
+.product__visual .js-open-block-modal {
+    width: 100%;
+    margin-top: 10px;
+    border-color: rgba(25, 55, 45, 0.2);
+}
+
 .product__visual img {
     width: auto;
 
@@ -907,6 +913,10 @@ p {
     object-fit: contain;
 
     transition: transform 0.4s ease;
+}
+
+.product h3 {
+    padding: 20px;
 }
 
 .product:hover .product__visual img {
@@ -1073,9 +1083,11 @@ p {
     border-radius: 8px;
     align-self: flex-start;
 }
+
 .section-head__title .eyebrow--light, .section-head__title h2 {
     color: var(--cream) !important;
 }
+
 /* Адаптивность для мобильных */
 @media (max-width: 900px) {
     .certificates .photo-grid {
@@ -1449,7 +1461,8 @@ p {
 
 .section-head__info p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.85); !important;
+    color: rgba(255, 255, 255, 0.85);
+!important;
     font-size: 13px;
     line-height: 1.6;
 }

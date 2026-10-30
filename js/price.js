@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block1": {
             title: "Блок пескоцементный стеновой полнотелый",
             subtitle: "Блок полнотелый БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/IMG-20241220-WA0005.webp",
             specs: [
                 ["Количество штук в поддоне", "60"],
                 ["Кол-во шт на 1м²", "13"],
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block2": {
             title: "Блок пескоцементный стеновой 4-пустотный",
             subtitle: "Блок 4х щелевой БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/4-.webp",
             specs: [
                 ["Количество штук в поддоне", "72"],
                 ["Кол-во шт на 1м²", "13"],
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block3": {
             title: "Блок пескоцементный перегородочный 2-пустотный",
             subtitle: "Блок 2х пустотный для перегородок 120мм БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/2----90-.webp",
             specs: [
                 ["Размер", "390х120х188 мм"],
                 ["Количество штук в поддоне", "100"],
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block4": {
             title: "Блок пескоцементный перегородочный 2-пустотный",
             subtitle: "Блок 2х пустотный для перегородок 90мм БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/2----120-.webp",
             specs: [
                 ["Размер", "390х90х188 мм"],
                 ["Количество штук в поддоне", "130"],
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block5": {
             title: "Блок пескоцементный стеновой 2-пустотный с открытым дном",
             subtitle: "Блок 2х пустотный 190мм БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/2---190-_2.webp",
             specs: [
                 ["Размер", "390х190х188 мм"],
                 ["Количество штук в поддоне", "72"],
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block6": {
             title: "Блок колотый 1-сторонний",
             subtitle: "Блок 2х пустотный колотый БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/-.webp",
             specs: [
                 ["Размер", "390х190х188 мм"],
                 ["Количество штук в поддоне", "90"],
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block7": {
             title: "Блок колотый 2-сторонний",
             subtitle: "Блок 2х пустотный колотый желтый БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/1.webp",
             specs: [
                 ["Размер", "390х190х188 мм"],
                 ["Количество штук в поддоне", "90"],
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block8": {
             title: "Блок колотый 3-сторонний",
             subtitle: "Блок 2х пустотный колотый терракотовый БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/1%20(1).webp",
             specs: [
                 ["Размер", "390х190х188 мм"],
                 ["Количество штук в поддоне", "90"],
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block9": {
             title: "Блок колотый полнотелый",
             subtitle: "Блок колотый БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/1%20(2).webp",
             specs: [
                 ["Размер", "390х95х188 мм"],
                 ["Количество штук в поддоне", "150"],
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block10": {
             title: "Блок пескоцементный стеновой пустотелый",
             subtitle: "Блок рядовой БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/--320390188.webp",
             specs: [
                 ["Размер", "390х290х188 мм"],
                 ["Количество штук в поддоне", "60"],
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "block11": {
             title: "Блок арболитовый",
             subtitle: "Блок арболитовый БПТ 190х40х40",
-            img: "assets/images/image.png",
+            img: "assets/images/blocks/2.webp",
             specs: [] // Нет характеристик
         }
     };
